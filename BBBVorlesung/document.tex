@@ -1,19 +1,58 @@
-%%This is a very basic article template.
-%%There is just one section and two subsections.
-\documentclass{article}
+\documentclass{style/lni}
+% in englisch stattdessen:
+%\documentclass[english]{lni}
 
+\IfFileExists{style/latin1.sty}{\usepackage{style/latin1}}{\usepackage{isolatin1}}
+
+\usepackage{graphicx}
+\usepackage{style/fancyhdr}
+\usepackage{listings} %if lstlistings is used
+\usepackage{style/changepage} %for changing topmargin on first page
+\usepackage[figurename=Abb., tablename=Tab., small]{caption}[2008/04/01]
+\renewcommand{\lstlistingname}{List.}    % Listingname heißt nun List. 
+ 
+%Beginn der Seitenzählung für diesen Beitrag
+\setcounter{page}{11}
+
+%Kopfzeileneinstellungen
+\pagestyle{fancy}
+\fancyhead{} % Löscht alle Kopfzeileneinstellungen
+\fancyhead[RO]{\small $<$Vorname Nachname [et. al.]$>$(Hrsg.): $<$Buchtitel$>$, \linebreak Lecture Notes in Informatics (LNI), Gesellschaft für Informatik, Bonn $<$Jahr$>$ \hspace{5pt} \thepage \hspace{0.05cm}}
+\fancyfoot{} % Löscht alle Fußzeileneinstellungen
+\renewcommand{\headrulewidth}{0.4pt} %Linie unter Kopfzeile 
+\setcounter{footnote}{0}
+
+\author{Voxxcxc rname1 Nachname1\footnote{Einrichtung/Universität, Abteilung,
+Anschrift, Postleitzahl Ort, emailadresse@author1} \, Vorname2 Nachname2\footnote{Einrichtung/Universität, Abteilung, Anschrift, Postleitzahl Ort, emailadresse@author2} \ und weitere Autorinnen und Autoren in der gleichen Notation}
+\title{Der Titel des Beitrags, der auch etwas länger sein und über zwei Zeilen reichen kann}
 \begin{document}
+\maketitle
+
+%Überschrift des Literaturverzeichnisses - delete this line in english
+\renewcommand{\refname}{Literaturverzeichnis}
+\setcounter{footnote}{2} %Auf Anzahl der AutorInnen setzen, damit die weitere Nummerierung der Fußnoten passt
+
+\begin{abstract}
+Die \LaTeX-Klasse \texttt{lni} setzt die Layout-Vorgaben für Beiträge in LNI Konferenzbänden um. Dieses Dokument beschreibt ihre Verwendung und ist ein Beispiel für die entsprechende Darstellung. Der Abstract ist ein kurzer Überblick über die Arbeit der zwischen 70 und 150 Wörtern lang sein und das Wichtigste enthalten sollte. Die Formatierung erfolgt automatisch innerhalb des abstract-Bereichs.
+\end{abstract}
+\begin{keywords}
+LNI Guidelines, \LaTeX Vorlage. Die Formatierung erfolgt automatisch innerhalb des keywords-Bereichs.
+\end{keywords}
+
 
 
 \section{Title}
 
 \subsection{Subtitle}
-
+ 
 Plain text.
 
 \subsection{Another subtitle}
 
 More plain text.
+ 
 
+\bibliographystyle{style/lnig}
+\bibliography{references}
 
 \end{document}
