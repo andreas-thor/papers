@@ -4,3 +4,5 @@ BBBVorlesung/document.pdf
 *.bbl
 *.log
 *.blg
+*.bak
+*.sav
