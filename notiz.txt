@@ -1,5 +1,1 @@
 - Bilderauswahl: vereinfachen, zusammenfassen, SW-Lesbarkeit beachten
-- Evaluation: wie gehts kompakter? Stichpunkte, Symobilik?
-- Lasttest - nur kurz die Ergebnisse in einem Satz zusammenfassen
-- Kapitel related work: andere technische Lösungen für verteilte Vorlesung suchen, es sind nicht abweichende didaktische Senarien gemeint. Vielleicht bietet sich der Vergleich zum TT noch an. Oder wir sagen wir sind die ersten.
-
