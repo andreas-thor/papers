@@ -60,7 +60,7 @@ Hochschulen werden mit einem enormen Anstieg der Nachfrage nach qualitativ hochw
 %Seit 2007 steigen die Studierendenzahlen an Hochschulen gewaltig an.
 2016 studierten deutschlandweit rund 45\% mehr Studierende als noch im Jahr 2007.
 [Quelle]: Anzahl der Studierenden an Hochschulen in Deutschland vom Wintersemester 2002/2003 bis 2016/2017 url:http://de.statista.com/statistik/daten/studie/221/umfrage/anzahl-der-studenten-an-deutschen-hochschulen/
-Gleichzeitig wachsen die zur akademischen Bildung gehörenden Ressourcen nur teilweise mit. Dazu gehören bspw. bauliche und räumliche Beschränkungen sowie zugehörige Infrastruktur und die personelle Ausstattung. Eine Aufteilung von Studiengruppen ist aufgrund der Begrenzung des Lehrdeputats auch nur selten möglich.
+Gleichzeitig wachsen die zur akademischen Bildung gehörenden Ressourcen nur teilweise mit. Dazu gehören bspw. bauliche und räumliche Beschränkungen sowie zugehörige Infrastruktur und die personelle Ausstattung. Eine Aufteilung von Studiengruppen scheint die Lösung, ist aber aufgrund der Begrenzung des Lehrdeputats nur selten möglich.
 
 %Szenarien
 
@@ -89,34 +89,43 @@ Es werden Lösungen benötigt um die zwangsläufig entstehenden Nachteile der örtli
 %Kombination lokalen Lerngrupper mit E-Learning;
 %Für alle ``allgemeine'' Vorlesung; individuelles Lernen / Üben dann in Gruppen, u.a. gesteuert durch Lerncoach o.ä.
 
-Für alle Fälle galt es Lösungen
+Ziel war das Entwickeln einer Lösung die Distanzen  überbrückt und gleichzeitig die Vorteile von Präsenz-Lehrveranstaltungen erhält. 
+Dozierende sollen ihre Lehrveranstaltung interaktiv auf die Bedürfnisse der Lerngruppen anpassen können um deren Motivation möglichst hoch zu halten.
+Dazu sollen sie  verschiedene Lehrmethoden nutzen, den Studierenden Fragen stellen und aus dem Auditorium Feedback erhalten. (vgl. [24, S. 3-5])
+Die Ansprache möglichst vieler Lerntypen soll gewährleistet sein.
+Anonymität soll weitestgehend vermieden werden, damit Isolationsgefahr garnicht erst aufkeimt und einhergehende Motivations- und Koordinationsprobleme sowie Defizite im Gemeinschaftsgefühl garnicht erst entstehen (Sauter und Sauter (2002), S.205 f. : Blended Learning. Effiziente Integration von E-Learning und Präsenztraining; 3-472-04469-1)
 
-Lösung soll die Vorteile einer Präsenz-Lehrveranstaltung erhalten.
-Alternativen anreißen und benennen was nicht geschehen soll.
+Damit scheiden eLearning Ansätze wie "Vorlesungsaufzeichnung" oder "Videokonferenzen", bei denen jeder Student allein am Arbeitsplatz Inhalte durcharbeiten soll, aus. 
 
-Grundsätzlich kann den dargestellten Szenarien auch mit einer Lösung auf Basis eines Web-Konferenz-Systems wie Adobe Connect begegnet werden, jedoch bringt sie schwer überbrückbare Herausforderungen mit sich: 
+Im Ergebnis kombinierten wir die klassische Präsenz-Lehrveranstaltungen mit elektronischen Werkzeugen.
+Bei der "verteilten Vorlesung"  befinden sich die aufgeteilten Studierendengruppen in unterschiedlichen Hörsälen.
+In einem Hörsaal ist der Dozent, dessen Veranstaltung über ein Videokonferenzsystem in die restlichen Hörsäle übertragen und zusätzlich aufgezeichnet wird (ggf. zur Wiederholung).
+In allen Veranstaltungsräumen haben die Studierenden die Möglichkeit, über ein System dem Dozenten Fragen zu stellen und an Umfragen teilzunehmen.
 
-a) hohe Serveranforderungen bei vielen Leuten
+Grundsätzlich kann das dargestellte Szenario auch mit einer Lösung auf Basis eines existierenden Web-Konferenz-Systems wie Adobe Connect begegnet werden, jedoch bringt sie schwer überbrückbare Herausforderungen an die Infrastruktur der Hochschule mit sich: 
 
-b) hohe Netzwerkanforderungen wenn viele Leute im gleichen Raum / gleichen Standort 
-Alle im gleichen WLAN bzw. der gleichen Funkzelle; geteilte Bandbreite
+a) Serveranforderungen bei vielen Teilnehmern
 
-c) hohe Anforderungen an Teilnehmer (eigenes Notebook, ggf. ohne Steckdose im Dauerbetrieb)
+b) Netzanforderungen an das Hochschul-WLAN wenn sich viele Teilnehmer am gleichen Standort konzentrieren und eine breitbandige Verbindung benötigen
 
+c) Anforderungen an das Steckdosennetz des Raumes, wenn jeder Teilnehmer per  Notebook oder Smartphone im Dauerbetrieb an der Sitzung teilnehmen will
 
+%Bereitstellung eines eigenen studentischen Notebooks - Wenn das ein Argument ist, dann kann ich auch nicht davon ausgehen das jeder ein Smartphone besitzt
 
-Senken den Anforderungen durch
+In Konsequenz musste ein auf Basisfunktionen reduzierter Web-Konferenz-Client geschaffen werden, der die technischen Anforderungen senkt: 
 
 %a) ``virtuelle Gruppennutzer''
 %a) ``virtuelle Nutzer'' hinter einem realen Nutzer
 
 
-a) nur Übertragen des Chats und der Abstimmungen
+a) zwischen Studierenden und Dozent werden nur Chats und Abstimmungen übertragen sowie serverseitig weiterverarbeitet
 
-b) ausschließlich Datenübertragung wenn notwendig, keine dauerhafte Sitzung
+b) Datenübertragung findet nur bei Bedarf (push \& pull) statt - es soll keine dauerhafte Sitzung nötig sein
 
-c) nur Nutzung von Smartphone / Tablet  wenn Interaktion gewünscht, dazwischen sind die Geräte im Stand-By und ggf. offline
-Eine Lösung muss aus diesem Zustand heraus schnell einzatzbereit sein.
+c) Endgeräte wie Smartphone/Tablet/Notebook werden nur genutzt wenn eine Interaktion gewünscht ist, dazwischen sind die Geräte im Stand-By und ggf. offline
+
+
+Eine Lösung muss aus diesem Zustand heraus schnell einsatzbereit sein.
 
 
 
