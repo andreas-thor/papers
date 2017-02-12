@@ -178,10 +178,25 @@ c) Kommunikation der Teilnehmer via ``virtuellen Gruppennutzers'' durch Manipula
 Was gibt es für Besonderheiten bei der Implementation?
 
 
-\section{Endnutzertest und Evaluation} %todo Tobi
+\section{Use Case und Evaluation} %todo Tobi
+
+technische Evaluation: 
+
+Im Vergleich mit einem Nutzungsszenario bei dem alle Teilnehmer den mitgelieferten Standard-HTML5 Client des BBB Systems nutzten, konnten Systemanforderungen gesenkt werden (vgl. in Kau2016, Kapitel 7):
+
+%a) Senkung der Bandbreite im Server
+a) Ausgehender Datenverkehr am Server ist im Durchschnitt niedriger weil hauptsächlich nur noch laufende Sitzungsdaten zwischen Päsentationscomputern der beteiligten Räumen ausgetauscht werden.
+
+b) Die Grundlast des CPU Loads am BBB-Server war im Durchschnitt aus dem gleichen Grund geringer. Maximalspitzen die zu Zeitpunkten von Umfragen und Chats entstehen, konnten nicht gesenkt werden. Das ist nachvollziehbar, weil die Anzahl der zu verarbeiteten Nachrichten sich im neuen Nutzungsszenario nicht ändert.
+
+c) Wie weit sich das Szenario positiv auf ein Absenken der Netzwerkanforderungen der mobilen Clients im Raum auswirkt konnte nicht betrachtet werden.
+Wir gehen jedoch davon aus, dass die WLAN-Ressourcen bei unserer Lösung vernachlässigbar sind insofern das Netzwerk grundsätzlich für die Aufnahme aller Studierenden im Raum konzipiert ist.
+Schließlich werden pro Request nur wenige Kilobyte Daten getauscht.
+
+Evaluation des Endnutzertests:
 
 %Um die Usability und die Funktionen zu testen, wurde ein Nutzertest durchgeführt.
-Um die Usability und die Funktionen zu testen, wurden ca. 20 Teilnehmer in einem Hörsaal und einem Seminarraum aufgeteilt.
+Um die Usability und Funktionen zu testen, wurden ca. 20 Teilnehmer in einem Hörsaal und einem Seminarraum aufgeteilt.
 %Ein weiterer Dozent hielt seine Vorlesung im Seminarraum.
 Der Dozent hielt seine Vorlesung im Seminarraum.
 Diese wurde über BBB in den Hörsaal übertragen.
@@ -195,34 +210,73 @@ Weitere Informationen wurden absichtlich nicht gegeben, damit die Testpersonen m
 %Vergleich der Lasttest
 %nur kurz die Ergebnisse in einem Satz zusammenfassen 
 
-Ergebnisse des Systemtests: 
+Dozent: 
 
-Im Vergleich mit einem Nutzungsszenario bei dem alle Teilnehmer den mitgelieferten Standard-HTML5 Client des BBB Systems nutzten, konnten Systemanforderungen gesenkt werden (vgl. in Kau2016, Kapitel 7):
+a) Für den Dozenten war die Veranstaltung sehr anstrengend, da es seiner Einschätzung nach im Vergleich zu klassischen Vorlesungen technische Hürden gab.
+Ebenfalls war ein anderer didaktischer Aufbau der Vorlesung erforderlich.
 
-%a) Senkung der Bandbreite im Server
-a) Ausgehender Datenverkehr am Server ist im Durchschnitt niedriger weil hauptsächlich nur noch laufende Sitzungsdaten zwischen Päsentationscomputern der beteiligten Räumen ausgetauscht werden.
+b) Teilweise entstand Unsicherheit inwiefern Fachinhalte vollständig vermitteln wurden.
+Zusätzlich fehlte ihm die Kenntnis über die bestehende Aufmerksamkeit der Studierenden im entfernten Hörsaal.
 
-b) Die Grundlast des CPU Loads am BBB-Server war im Durchschnitt aus dem gleichen Grund geringer. Maximalspitzen die zu Zeitpunkten von Umfragen und Chats entstehen, konnten nicht gesenkt werden. Das ist nachvollziehbar, weil die Anzahl der zu verarbeiteten Nachrichten sich im neuen Nutzungsszenario nicht ändert.
+c) Abschließend betrachtet kann sich der Dozent vorstellen Vorlesungen dieser Art öfter zu halten.
+Er war mit der gehaltenen Veranstaltung insgesamt zufrieden, hatte den Textchat nach seinem Eindruck rechtzeitig gesehen und Probleme beim Zuhörer überwiegend erkennen können.
+Besonders positiv entwickelte sich die Nutzbarkeit und Aussagefähigkeit des Umfragetools.
 
-c) Wie weit sich das Szenario positiv auf ein Absenken der Netzwerkanforderungen der mobilen Clients im Raum auswirkt konnte nicht betrachtet werden.
-Wir gehen jedoch davon aus, dass die WLAN-Ressourcen bei unserer Lösung vernachlässigbar sind insofern das Netzwerk grundsätzlich für die Aufnahme aller Studierenden im Raum konzipiert ist.
-Schließlich werden pro Request nur wenige Kilobyte Daten getauscht.
+Es ist davon auszugehen, dass mit weiteren übertragenen Vorlesungen die Bedienung immer leichter wird und folglich durch die eintretende Routine die Anfangsschwierigkeiten überwunden werden können [7, S. 5].
 
-Ergebnisse des Endnutzertests:
+Studierende:
 
-a) 
+Die nachstehende Grafik zeigt die Zusammenfassung des formativen Feedbacks der Teilnehmer.
+[Grafik Tabelle]
 
-Auswertung der Umfragen: wie gehts kompakter? Stichpunkte, Symbolik?
-Fragen eventuell weglassen
-90 Grad drehen
-auf 100% ziehen
-Frage nicht beantwortet einbringen
-auf ausführliche BA verweisen
+In Kombination mit einem ausführlichen Evaluationsgespräch ergaben sich folgende Erkenntnisse:
+
+a) Die Bewertung der Usability und Stabilität der Anwendung fiel durchweg positiv aus.
+
+b) Auch die Beurteilungen des Umfragetools sind weitestgehend positiv. Nur drei Befragte
+gaben an, dass der Zeitraum zur Beantwortung einer Frage zu kurz sei. Die Verfügbarkeit der Umfrage sollte durch das Ablaufen eines Timers sichtbar gemacht werden.
+%Hier kann man die Dozierenden besser einweisen, einen ausreichenden Zeitrahmen zum Beantworten der Fragen einzuräumen.
+
+%Das meiste negative Feedback bekam der Textchat, obwohl es von technisch Seite keine Probleme gab. Jederzeit konnten Fragen gestellt werden. Ein Teilnehmer hat angegeben, dass seine Frage nicht richtig verstanden wurde.
+c) Durch die angestrebte Kurzfassung im Textchat können wichtige Informationen zum Verständnis der Frage verloren gehen.
+Eine fehlende Übermittlung von Mimik und Gestik erschwert zudem das Erfassen der gestellten Frage.
+Wenige Zuhörer bemängelten, dass der Dozent auf die gestellte Frage nicht angemessen eingegangen sei.
+%Zum Einen könnte es zu einer zeitlichen Verzögerung bei der Beantwortung gekommen sein, zum Anderen könnte aber auch der Umfang der Antwort nicht ausreichend gewesen sein.
+%Bei der ersten Vermutung kann es durchaus sein, dass der Dozent die Frage zu diesem Zeitpunkt nicht beantworten wollte, weil sie nicht thematisch passte oder er sein Kapitel erst zu Ende lesen wollte.
+%Auch in klassischen Vorlesungen wird dies zum Teil so praktiziert.
+%Jedoch bekommen die Fragenden ein Gefühl dafür, ob der Dozent die eigene Handmeldung wahrgenommen hat oder nicht.
+%Dieses Gefühl fehlt bei der Hörsaalübertragung.
+Schlussfolgernd sollte der Dozent bereits bei der Vorlesungsplanung Zeitslots einbauen, in denen der Chat verfolgt wird.
+Leider hat der Dozent kein Gefühl dafür, wie ausführlich der Fragende die Antwort braucht, weil er zu diesem keinen Blickkontakt hat.
+Nur mit Rückfragen, wie z.B. "Ist Ihre Frage damit beantwortet?", erhält der Dozent ein Feedback.
+%Am wenigsten konnten die Fragen schon innerhalb des Chats beantwortet werden.
+%Während der abschließenden Feedbackrunde kam die Rückmeldung, dass einfache Fragen bereits verbal innerhalb der Gruppe geklärt wurden, ohne dabei den Textchat zu nutzen.
+%In klassischen Veranstaltungen kann dieses Verhalten auch beobachtet werden und ist somit nicht negativ zu werten.
+
+d) Die Qualität der Veranstaltung ist grundlegend von Qualität des Mikrofons und der Lautsprecher abhängig.
+
+e) Es besteht die Erwartung, dass sich das Chatsystem auf dem Teilnehmer-Endgerät automatisch aktualisiert.
+Die Bedienung sollte sich an mobilen Messengen orientieren.
+
+f) Es besteht die Nachfrage bzgl. eines Audiorückkanals zum stellen von Fragen.
+
+g) Fragen werden oft bereits in der Lerngruppe vor Ort verbal geklärt und erreichen somit nicht den Dozenten
+
+Weitere Details zur Evaluation sowie Schlussfolgerungen finden sich in Kaufmann 2016 Kapitel 8.
+
+%Auswertung der Umfragen: wie gehts kompakter? Stichpunkte, Symbolik?
+%Fragen eventuell weglassen
+%90 Grad drehen
+%auf 100% ziehen
+%Frage nicht beantwortet einbringen
+%auf ausführliche BA verweisen
 
 
 \section{Zusammenfassung und Ausblick}
 
- 
+Starke Integration des Umfragetools kann Sicherheit zum Verständnis der Zuhörer geben.
+
+
 
 %\bibliographystyle{style/lnig}
 \bibliography{../Literatur/literatur}
