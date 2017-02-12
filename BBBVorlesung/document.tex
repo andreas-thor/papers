@@ -112,7 +112,7 @@ c) Anforderungen an das Steckdosennetz des Raumes, wenn jeder Teilnehmer per  No
 
 %Bereitstellung eines eigenen studentischen Notebooks - Wenn das ein Argument ist, dann kann ich auch nicht davon ausgehen das jeder ein Smartphone besitzt
 
-In Konsequenz musste ein auf Basisfunktionen reduzierter Web-Konferenz-Client geschaffen werden, der die technischen Anforderungen senkt: 
+In Konsequenz musste ein Web-Konferenz-Client geschaffen werden, der benötigte Funktionen zur Verfügung stellt aber aufgrund seines Designs die technischen Anforderungen senkt: 
 
 %a) ``virtuelle Gruppennutzer''
 %a) ``virtuelle Nutzer'' hinter einem realen Nutzer
@@ -122,8 +122,7 @@ a) zwischen Studierenden und Dozent werden nur Chats und Abstimmungen übertragen
 
 b) Datenübertragung findet nur bei Bedarf (push \& pull) statt - es soll keine dauerhafte Sitzung nötig sein
 
-c) Endgeräte wie Smartphone/Tablet/Notebook werden nur genutzt wenn eine Interaktion gewünscht ist, dazwischen sind die Geräte im Stand-By und ggf. offline
-
+c) Endgeräte wie Smartphone/Tablet/Notebook werden nur genutzt wenn eine Interaktion gewünscht ist, dazwischen sind die Geräte im Stand-By oder ggf. offline
 
 Eine Lösung muss aus diesem Zustand heraus schnell einsatzbereit sein.
 
@@ -179,25 +178,46 @@ c) Kommunikation der Teilnehmer via ``virtuellen Gruppennutzers'' durch Manipula
 Was gibt es für Besonderheiten bei der Implementation?
 
 
-\section{Use Case und Evaluation}
+\section{Endnutzertest und Evaluation} %todo Tobi
 
-Vergleich der Lasttest
+%Um die Usability und die Funktionen zu testen, wurde ein Nutzertest durchgeführt.
+Um die Usability und die Funktionen zu testen, wurden ca. 20 Teilnehmer in einem Hörsaal und einem Seminarraum aufgeteilt.
+%Ein weiterer Dozent hielt seine Vorlesung im Seminarraum.
+Der Dozent hielt seine Vorlesung im Seminarraum.
+Diese wurde über BBB in den Hörsaal übertragen.
+Der Dozent bereitete sich bewusst vor die Funktionen der Anwendung zu nutzen.
+Dafür war eine Anpassung seines Lehrkonzepts notwendig.
+Die 20 Zuhörer wurden aufgefordert, jegliche Kommunikation zum Dozenten ausschließlich über ihr mobiles Endgerät durchzuführen.
+Für den Zugang wurden Quick Response (QR)-Codes im Publikum ausgeteilt.
+Weitere Informationen wurden absichtlich nicht gegeben, damit die Testpersonen möglichst unvoreingenommen die Anwendung testen können.
+%Nach der 25 minütigen Veranstaltung hatten die Testpersonen ausreichend Zeit, die Evaluationsbögen (siehe Anlagen, vgl. [10, S. 8]) auszufüllen.
 
-nur kurz die Ergebnisse in einem Satz zusammenfassen
+%Vergleich der Lasttest
+%nur kurz die Ergebnisse in einem Satz zusammenfassen 
 
-a) Senkung der Bandbreite im Server
+Ergebnisse des Systemtests: 
 
-b) Senkung der CPU Load beim Server; nicht so dramatisch, aber Max-Spitzen gehen weg
+Im Vergleich mit einem Nutzungsszenario bei dem alle Teilnehmer den mitgelieferten Standard-HTML5 Client des BBB Systems nutzten, konnten Systemanforderungen gesenkt werden (vgl. in Kau2016, Kapitel 7):
 
-c) Senkung der Netzwerklast der Clients (im Raum) -- haben wir das gemessen???
+%a) Senkung der Bandbreite im Server
+a) Ausgehender Datenverkehr am Server ist im Durchschnitt niedriger weil hauptsächlich nur noch laufende Sitzungsdaten zwischen Päsentationscomputern der beteiligten Räumen ausgetauscht werden.
 
+b) Die Grundlast des CPU Loads am BBB-Server war im Durchschnitt aus dem gleichen Grund geringer. Maximalspitzen die zu Zeitpunkten von Umfragen und Chats entstehen, konnten nicht gesenkt werden. Das ist nachvollziehbar, weil die Anzahl der zu verarbeiteten Nachrichten sich im neuen Nutzungsszenario nicht ändert.
 
+c) Wie weit sich das Szenario positiv auf ein Absenken der Netzwerkanforderungen der mobilen Clients im Raum auswirkt konnte nicht betrachtet werden.
+Wir gehen jedoch davon aus, dass die WLAN-Ressourcen bei unserer Lösung vernachlässigbar sind insofern das Netzwerk grundsätzlich für die Aufnahme aller Studierenden im Raum konzipiert ist.
+Schließlich werden pro Request nur wenige Kilobyte Daten getauscht.
 
-Ergebnisse der Use Cases %todo Tobi
+Ergebnisse des Endnutzertests:
 
 a) 
 
-Auswertung der Umfragen: wie gehts kompakter? Stichpunkte, Symobilik?
+Auswertung der Umfragen: wie gehts kompakter? Stichpunkte, Symbolik?
+Fragen eventuell weglassen
+90 Grad drehen
+auf 100% ziehen
+Frage nicht beantwortet einbringen
+auf ausführliche BA verweisen
 
 
 \section{Zusammenfassung und Ausblick}
