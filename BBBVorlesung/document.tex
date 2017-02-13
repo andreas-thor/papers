@@ -137,7 +137,7 @@ dazu: andere technische Lösungen für verteilte Vorlesung suchen, es sind nicht a
 Kurzvorstellung BigBlueButton
 
 
-\section{Architektur}%todo Luise
+\section{Architektur}
 Der prototypische Aufbau sieht vor, dass die Teilnehmergruppen in mehreren Räumen verteilt werden.
 Dabei ist es nicht entscheidend, ob es sich um Hörsäle oder Seminarräume handelt.
 Es müssen lediglich ein einfaches Notebook, ein Beamer und Audiotechnik zur Übertragung der Veranstaltung zur Verfügung stehen.
@@ -154,7 +154,7 @@ Der beschriebene Aufbau lässt es nicht zu, dass Studierende aktiv an der Vorlesu
 Gerade Teilnehmer in entfernten Räumen haben keine Möglichkeit Fragen an die Dozierenden zu stellen oder an Umfragen teilzunehmen.
 
 Ein Betreten der BigBlueButton-Sitzung durch alle Studierenden kann nicht gefordert werden, da die Ansprüche an Nutzerhardware und Netzinfrastruktur zu hoch sind.
-Zum Teil sind Hörsäle auch nicht mit WLAN-Technologie ausgestattet sondern bieten den Dozierenden nur Netzzugang über LAN
+Zum Teil sind Hörsäle auch nicht mit WLAN-Technologie ausgestattet sondern bieten den Dozierenden nur Netzzugang über LAN.
 
 Durch Entwicklung einer Webanwendung konnte erreicht werden, dass die Studierenden über ihr privates Mobile Device an gestarteten Umfragen teilnehmen, Chatnachrichten in den öffentlichen Chat schreiben und diese lesen können, ohne in die BigBlueButton-Sitzung über den Flash- bzw. HTML5-Client einzutreten.
 Da diese Kommunikation nur wenig Bandbreite benötigt, stellt ein Nutzungsszenario über das Mobilfunknetz kein Problem dar.
@@ -175,7 +175,7 @@ c) Kommunikation der Teilnehmer via ``virtuellen Gruppennutzers'' durch Manipula
 
 
 
-\section{Prototypische Implementation} %todo Luise
+\section{Prototypische Implementation}
 
 Die Webanwendung basiert auf PHP.
 Um den Redis PubSub Channel ansprechen zu können und valide MongoDB Abfragen zu generieren, müssen serverseitig verschiedene PHP-Erweiterungen installiert werden (vgl. \cite{Kau16}, S.~34).
