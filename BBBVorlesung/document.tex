@@ -154,13 +154,15 @@ Der beschriebene Aufbau lässt es nicht zu, dass Studierende aktiv an der Vorlesu
 Gerade Teilnehmer in entfernten Räumen haben keine Möglichkeit Fragen an die Dozierenden zu stellen oder an Umfragen teilzunehmen.
 
 Ein Betreten der BigBlueButton-Sitzung durch alle Studierenden kann nicht gefordert werden, da die Ansprüche an Nutzerhardware und Netzinfrastruktur zu hoch sind.
+Zum Teil sind Hörsäle auch nicht mit WLAN-Technologie ausgestattet sondern bieten den Dozierenden nur Netzzugang über LAN
 
 Durch Entwicklung einer Webanwendung konnte erreicht werden, dass die Studierenden über ihr privates Mobile Device an gestarteten Umfragen teilnehmen, Chatnachrichten in den öffentlichen Chat schreiben und diese lesen können, ohne in die BigBlueButton-Sitzung über den Flash- bzw. HTML5-Client einzutreten.
+Da diese Kommunikation nur wenig Bandbreite benötigt, stellt ein Nutzungsszenario über das Mobilfunknetz kein Problem dar.
+
 Die Webanwendung kommuniziert über den Redis-PubSub-Channel mit dem BigBlueButton-Kern (vgl. \cite{Doc16}).
 Durch dieses Verfahren werden Chatnachrichten geschrieben und Umfrageantworten an den BigBlueButton-Server gesendet.
 Für das Abrufen von Informationen wird die MongoDB, die mit dem HTML5-Client mitgeliefert wird, abgefragt.
 
-%todo luise: WLAN Auslastung/ nur LAN vorhanden --> Mobilfunk bei Studierenden
 %todo luise: 1. Bild von 3 Räumen (in einem der Dozent)
 %todo luise: 2. Bild wie Abb. 6 in BA (2 Schnittstellen: MongoDB und RedisPubSub); mehr Client-Nutzer darstellen; Pfeile stellen Informationsfluß dar; was passiert bei Erweiterung?; welche Komponenten werden angepasst? welche bleiben bestehen?
 Setting
@@ -174,6 +176,15 @@ c) Kommunikation der Teilnehmer via ``virtuellen Gruppennutzers'' durch Manipula
 
 
 \section{Prototypische Implementation} %todo Luise
+
+Die Webanwendung basiert auf PHP.
+Um den Redis PubSub Channel ansprechen zu können und valide MongoDB Abfragen zu generieren, müssen serverseitig verschiedene PHP-Erweiterungen installiert werden (vgl. \cite{Kau16}, S.~34).
+Auf den Client-Endgeräten muss, neben einem Webbrowser, keine zusätzliche Software installiert werden.
+
+Die Syntax der Redis-Channel Nachrichten ist immer gleich und setzt sich aus verschiedenen Variablen zusammen.
+Die Variablenwerte können über API-Aufrufe (vgl. \cite{Doc16}) abgerufen oder frei gewählt werden (z.B. Benutzername).
+
+Alle für die Anwendung relevanten Sitzungsinformationen befinden sich in der MongoDB-Datenbank \textit{meteor} unter den Collections \textit{bbb\_chat} und \textit{bbb\_poll}.
 
 Was gibt es für Besonderheiten bei der Implementation?
 
