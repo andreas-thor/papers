@@ -51,6 +51,7 @@ E-Learning, BigBlueButton, verteilte Vorlesung, Evaluation
 
 
 \section{Motivation} %todo Tobi: Szenario Ausbildungszentren --> kleine Arbeitsgruppen
+ %comment_tobi: Wer war das?
 
 Das Projekt begegnet gleich drei Herausforderungen, denen sich die deutsche Hochschullandschaft im Allgemeinen und insbesondere die Hochschule für Telekommunikation Leipzig im Speziellen widmet.
 
@@ -91,20 +92,22 @@ Es werden Lösungen benötigt um die zwangsläufig entstehenden Nachteile der örtli
 
 Ziel war das Entwickeln einer Lösung die Distanzen  überbrückt und gleichzeitig die Vorteile von Präsenz-Lehrveranstaltungen erhält. 
 Dozierende sollen ihre Lehrveranstaltung interaktiv auf die Bedürfnisse der Lerngruppen anpassen können um deren Motivation möglichst hoch zu halten.
-Dazu sollen sie  verschiedene Lehrmethoden nutzen, den Studierenden Fragen stellen und aus dem Auditorium Feedback erhalten. (vgl. [24, S. 3-5])
+Dazu sollen sie  verschiedene Lehrmethoden nutzen, den Studierenden Fragen stellen und aus dem Auditorium Feedback erhalten.
+(vgl. [Lars Schlenker und Susann Beyer. »Online in der Vorlesung?Potentiale digitaler Medien für aktives Lernen«. In: 11. Workshop on e-Learning (WeL2013). 2013, S. 3-5])
 Die Ansprache möglichst vieler Lerntypen soll gewährleistet sein.
 Anonymität soll weitestgehend vermieden werden, damit Isolationsgefahr garnicht erst aufkeimt und einhergehende Motivations- und Koordinationsprobleme sowie Defizite im Gemeinschaftsgefühl garnicht erst entstehen (Sauter und Sauter (2002), S.205 f. : Blended Learning. Effiziente Integration von E-Learning und Präsenztraining; 3-472-04469-1)
 
 Damit scheiden eLearning Ansätze wie "Vorlesungsaufzeichnung" oder "Videokonferenzen", bei denen jeder Student allein am Arbeitsplatz Inhalte durcharbeiten soll, aus. 
 
 Im Ergebnis kombinierten wir die klassische Präsenz-Lehrveranstaltungen mit elektronischen Werkzeugen.
-Bei der "verteilten Vorlesung"  befinden sich die aufgeteilten Studierendengruppen in unterschiedlichen Hörsälen.
-In einem Hörsaal ist der Dozent, dessen Veranstaltung über ein Videokonferenzsystem in die restlichen Hörsäle übertragen und zusätzlich aufgezeichnet wird (ggf. zur Wiederholung).
+%comment_tobi: Ab hier erfolgt eine Vermischung mit Kapitel "Architektur"
+"Bei der verteilten Vorlesung"  / "in unserem Lehr-/Lernszenario" befinden sich die aufgeteilten Studierendengruppen an unterschiedlichen Standorten.
+In einem Raum ist der Dozent, dessen Veranstaltung über ein Videokonferenzsystem an die anderen Standorte übertragen und zusätzlich aufgezeichnet wird (ggf. zur Wiederholung).
 In allen Veranstaltungsräumen haben die Studierenden die Möglichkeit, über ein System dem Dozenten Fragen zu stellen und an Umfragen teilzunehmen.
 
-Grundsätzlich kann das dargestellte Szenario auch mit einer Lösung auf Basis eines existierenden Web-Konferenz-Systems wie Adobe Connect begegnet werden, jedoch bringt sie schwer überbrückbare Herausforderungen an die Infrastruktur der Hochschule mit sich: 
+Grundsätzlich kann das dargestellte Szenario auch mit einer Lösung auf Basis eines existierenden Web-Konferenz-Systems wie Adobe Connect begegnet werden, jedoch bringt sie hohe Anforderungen an die Infrastruktur der Hochschule mit sich: 
 
-a) Serveranforderungen bei vielen Teilnehmern
+a) Systemanforderungen an den Konferenzserver bei vielen Teilnehmern
 
 b) Netzanforderungen an das Hochschul-WLAN wenn sich viele Teilnehmer am gleichen Standort konzentrieren und eine breitbandige Verbindung benötigen
 
@@ -118,14 +121,13 @@ In Konsequenz musste ein Web-Konferenz-Client geschaffen werden, der benötigte F
 %a) ``virtuelle Nutzer'' hinter einem realen Nutzer
 
 
-a) zwischen Studierenden und Dozent werden nur Chats und Abstimmungen übertragen sowie serverseitig weiterverarbeitet
+a) zwischen den Endgeräten der Studierenden und des Dozenten werden nur Chats und Abstimmungen übertragen bzw. serverseitig verarbeitet
 
 b) Datenübertragung findet nur bei Bedarf (push \& pull) statt - es soll keine dauerhafte Sitzung nötig sein
 
 c) Endgeräte wie Smartphone/Tablet/Notebook werden nur genutzt wenn eine Interaktion gewünscht ist, dazwischen sind die Geräte im Stand-By oder ggf. offline
 
 Eine Lösung muss aus diesem Zustand heraus schnell einsatzbereit sein.
-
 
 
 \section{Related Work?}
@@ -138,6 +140,7 @@ Kurzvorstellung BigBlueButton
 
 
 \section{Architektur}
+%comment_tobi: Hier folgen große Überschneidung zu Kapitel Motivation. Wie vereinen wir das? Ich finde meine formulierten Inhalte von oben inzw. fehl am Platz ab der Markierung %comment_tobi. Welche Formulierungen wählen wir nun hier für dieses Kapitel - Luise / Tobias?
 Der prototypische Aufbau sieht vor, dass die Teilnehmergruppen in mehreren Räumen verteilt werden.
 Dabei ist es nicht entscheidend, ob es sich um Hörsäle oder Seminarräume handelt.
 Es müssen lediglich ein einfaches Notebook, ein Beamer und Audiotechnik zur Übertragung der Veranstaltung zur Verfügung stehen.
@@ -147,6 +150,7 @@ Dafür wird eine BigBlueButton-Sitzung initiiert und die Dozierenden treten diese
 Dabei können Whiteboard, Präsentationsfolien, Anwendungen, das eigene Video und der Audiostrom übertragen werden.
 
 In den Veranstaltungsräumen wird jeweils ein Notebook aufgebaut und ein beliebiger anonymer Nutzer tritt ebenfalls der BigBlueButton-Sitzung bei.
+%comment_tobi: Warum anonym? Könnte den Leser verwirren.
 Die geteilten Inhalte der Dozierenden werden in die Veranstaltungsräume übertragen.
 Der technischen Support sorgt für einen reibungslosen Ablauf während der Veranstaltung.
 
@@ -173,36 +177,30 @@ b) Gastgruppen mit Notebook angemeldet; Übertragung per Beamer + Sound
 
 c) Kommunikation der Teilnehmer via ``virtuellen Gruppennutzers'' durch Manipulation des Redis Channels
 
-
+ %comment_tobi: was iast a)b)c)?
 
 \section{Prototypische Implementation}
+%comment_tobi: Ich werde in dem Kapitel nicht abgeholt. Irgendwie fehlt was davor und danch. Vielleicht liegt es an den noch nicht vorhandenen Bildern aus Kapitel Architektur.
 
 Die Webanwendung basiert auf PHP.
 Um den Redis PubSub Channel ansprechen zu können und valide MongoDB Abfragen zu generieren, müssen serverseitig verschiedene PHP-Erweiterungen installiert werden (vgl. \cite{Kau16}, S.~34).
 Auf den Client-Endgeräten muss, neben einem Webbrowser, keine zusätzliche Software installiert werden.
 
 Die Syntax der Redis-Channel Nachrichten ist immer gleich und setzt sich aus verschiedenen Variablen zusammen.
+%comment_tobi: Hier würde ich die Nachrichten visualisieren wie in deiner BA oder wenigstens auf deine BA als Quelle verweisen.
 Die Variablenwerte können über API-Aufrufe (vgl. \cite{Doc16}) abgerufen oder frei gewählt werden (z.B. Benutzername).
+%comment_tobi: die Infos das wir den Benutzernamen hier frei wählen scheint mir irritierend.
+%comment_tobi: , deren Werte über API-Aufrufe (vgl. \cite{Doc16}) beim BBB-Server? (oder wo?) abgerufen oder frei gewählt werden (z.B. in unserem Szenario der Benutzername).
 
 Alle für die Anwendung relevanten Sitzungsinformationen befinden sich in der MongoDB-Datenbank \textit{meteor} unter den Collections \textit{bbb\_chat} und \textit{bbb\_poll}.
+%comment_tobi: Was bringt dieser Satz? Kontext fehlt mir.
+%comment_tobi: Meinst du?: Alle für die Webanwendung ABZURUFENDEN Sitzungsinformationen befinden sich in der MongoDB-Datenbank \textit{meteor} unter den Collections \textit{bbb\_chat} und \textit{bbb\_poll}.
+%comment_tobi: Verweis auf Quelle Kaufmann 2016 Abschnitt 6.6.3 oder ähnlich verweisen 
 
 Was gibt es für Besonderheiten bei der Implementation?
 
 
 \section{Use Case und Evaluation} %todo Tobi
-
-technische Evaluation: 
-
-Im Vergleich mit einem Nutzungsszenario bei dem alle Teilnehmer den mitgelieferten Standard-HTML5 Client des BBB Systems nutzten, konnten Systemanforderungen gesenkt werden (vgl. in Kau2016, Kapitel 7):
-
-%a) Senkung der Bandbreite im Server
-a) Ausgehender Datenverkehr am Server ist im Durchschnitt niedriger weil hauptsächlich nur noch laufende Sitzungsdaten zwischen Päsentationscomputern der beteiligten Räumen ausgetauscht werden.
-
-b) Die Grundlast des CPU Loads am BBB-Server war im Durchschnitt aus dem gleichen Grund geringer. Maximalspitzen die zu Zeitpunkten von Umfragen und Chats entstehen, konnten nicht gesenkt werden. Das ist nachvollziehbar, weil die Anzahl der zu verarbeiteten Nachrichten sich im neuen Nutzungsszenario nicht ändert.
-
-c) Wie weit sich das Szenario positiv auf ein Absenken der Netzwerkanforderungen der mobilen Clients im Raum auswirkt konnte nicht betrachtet werden.
-Wir gehen jedoch davon aus, dass die WLAN-Ressourcen bei unserer Lösung vernachlässigbar sind insofern das Netzwerk grundsätzlich für die Aufnahme aller Studierenden im Raum konzipiert ist.
-Schließlich werden pro Request nur wenige Kilobyte Daten getauscht.
 
 Evaluation des Endnutzertests:
 
@@ -233,7 +231,7 @@ c) Abschließend betrachtet kann sich der Dozent vorstellen Vorlesungen dieser Ar
 Er war mit der gehaltenen Veranstaltung insgesamt zufrieden, hatte den Textchat nach seinem Eindruck rechtzeitig gesehen und Probleme beim Zuhörer überwiegend erkennen können.
 Besonders positiv entwickelte sich die Nutzbarkeit und Aussagefähigkeit des Umfragetools.
 
-Es ist davon auszugehen, dass mit weiteren übertragenen Vorlesungen die Bedienung immer leichter wird und folglich durch die eintretende Routine die Anfangsschwierigkeiten überwunden werden können [7, S. 5].
+Es ist davon auszugehen, dass mit weiteren übertragenen Vorlesungen die Bedienung immer leichter wird und folglich durch die eintretende Routine die Anfangsschwierigkeiten überwunden werden können [Ludger Bischofs u. a. »Erste Erfahrungen mit dem Virtuellen Softwareprojekt«. In: (2003)., S. 5].
 
 Studierende:
 
@@ -274,6 +272,19 @@ f) Es besteht die Nachfrage bzgl. eines Audiorückkanals zum stellen von Fragen.
 g) Fragen werden oft bereits in der Lerngruppe vor Ort verbal geklärt und erreichen somit nicht den Dozenten
 
 Weitere Details zur Evaluation sowie Schlussfolgerungen finden sich in Kaufmann 2016 Kapitel 8.
+
+technische Evaluation: 
+
+Im Vergleich mit einem Nutzungsszenario bei dem alle Teilnehmer den mitgelieferten Standard-HTML5 Client des BBB Systems nutzten, konnten Systemanforderungen gesenkt werden (vgl. in Kau2016, Kapitel 7):
+
+%a) Senkung der Bandbreite im Server
+a) Ausgehender Datenverkehr am Server ist im Durchschnitt niedriger weil hauptsächlich nur noch laufende Sitzungsdaten zwischen Päsentationscomputern der beteiligten Räumen ausgetauscht werden.
+
+b) Die Grundlast des CPU Loads am BBB-Server war im Durchschnitt aus dem gleichen Grund geringer. Maximalspitzen die zu Zeitpunkten von Umfragen und Chats entstehen, konnten nicht gesenkt werden. Das ist nachvollziehbar, weil die Anzahl der zu verarbeiteten Nachrichten sich im neuen Nutzungsszenario nicht ändert.
+
+c) Wie weit sich das Szenario positiv auf ein Absenken der Netzwerkanforderungen der mobilen Clients im Raum auswirkt konnte nicht betrachtet werden.
+Wir gehen jedoch davon aus, dass die WLAN-Ressourcen bei unserer Lösung vernachlässigbar sind insofern das Netzwerk grundsätzlich für die Aufnahme aller Studierenden im Raum konzipiert ist.
+Schließlich werden pro Request nur wenige Kilobyte Daten getauscht.
 
 %Auswertung der Umfragen: wie gehts kompakter? Stichpunkte, Symbolik?
 %Fragen eventuell weglassen
