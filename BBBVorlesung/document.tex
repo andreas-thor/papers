@@ -353,10 +353,18 @@ Es ist davon auszugehen, dass mit weiteren übertragenen Vorlesungen die Bedienun
 
 Studierende:
 
-Die nachstehende Grafik zeigt die Zusammenfassung des formativen Feedbacks der Teilnehmer.
-[Grafik Tabelle]
+Abbildung \ref{img:eva-tn} zeigt die Zusammenfassung des formativen Feedbacks der Teilnehmer.
+\begin{figure}
+	\centering
+	\includegraphics[width=9.5cm]{../Evaluationsergebnisse/Teilnehmerauswertung_Evaluation_Verteilte_Vorlesung.png}
+	\includegraphics[width=2.5cm]{../Evaluationsergebnisse/Teilnehmerauswertung_Evaluation_Verteilte_Vorlesung_Legende.png}
+	\caption{Ergebnisse des formativen Feedbacks der}
+	\label{img:eva-tn}
+\end{figure}
+%comment_tobi: Textchatfrage 4 entfernen?
 
 In Kombination mit einem ausführlichen Evaluationsgespräch ergaben sich folgende Erkenntnisse:
+%comment_tobi: Was lassen wir weg?
 
 a) Die Bewertung der Usability und Stabilität der Anwendung fiel durchweg positiv aus.
 
@@ -383,13 +391,18 @@ Nur mit Rückfragen, wie z.B. "Ist Ihre Frage damit beantwortet?", erhält der Doz
 d) Die Qualität der Veranstaltung ist grundlegend von Qualität des Mikrofons und der Lautsprecher abhängig.
 
 e) Es besteht die Erwartung, dass sich das Chatsystem auf dem Teilnehmer-Endgerät automatisch aktualisiert.
-Die Bedienung sollte sich an mobilen Messengen orientieren.
+Eine an mobilen Messengern orientierte Überarbeitung des Systems steigert die Nutzungsakzeptanz.
 
-f) Es besteht die Nachfrage bzgl. eines Audiorückkanals zum stellen von Fragen.
+f) Es besteht vereinzelt der Wunsch nach einem Audiorückkanal zum Stellen von Fragen.
 
-g) Fragen werden oft bereits in der Lerngruppe vor Ort verbal geklärt und erreichen somit nicht den Dozenten
+g) Fragen werden oft bereits in der Lerngruppe vor Ort verbal geklärt und erreichen somit nicht den Dozenten. Genau das war von Uns erhofft.
 
-Weitere Details zur Evaluation sowie Schlussfolgerungen finden sich in Kaufmann 2016 Kapitel 8.
+h) Die Teilnehmer im dozentenlosen Raum hatten Mühe sowohl dem Vorlesungsverlauf am Beamer, als auch dem Chatverlauf in der Anwendung zu folgen.
+Dieses Verhalten war unsererseits nicht beabsichtigt. Instruktionen vor Sitzungsbeginn sollten aufklären, dass der Chat am Beamer parallel zur Vorlesung verfolgt werden kann.
+
+i) Es besteht vereinzelt der Wunsch  sich virtuell Melden zu können um Aufmerksamkeit zu erregen.
+
+Weitere Details zur Evaluation sowie Schlussfolgerungen finden sich in [Kaufmann 2016] Kapitel 8.
 
 technische Evaluation: 
 
@@ -414,8 +427,23 @@ Schließlich werden pro Request nur wenige Kilobyte Daten getauscht.
 
 \section{Zusammenfassung und Ausblick}
 
-Starke Integration des Umfragetools kann Sicherheit zum Verständnis der Zuhörer geben.
+%Gerade das studentische Feedback hat gezeigt, dass noch einige Funktionen der Anwendung verbessert werden müssen, bevor das System endgültig für verteilte Vorlesungen genutzt werden kann.
+%Besonders die Einführung von Multiple Choice Antworten und die Neugestaltung der Chatmenüs sind sinnvoll.
+%Auch sollte es möglich werden, Hyperlinks über den Chat generieren zu können.
+%Eine automatische Aktualisierung des Chatfensters und die Notwendigkeit der Verwendung von Emoticons sind zu untersuchen.
+%Ebenfalls ist zu prüfen, ob virtuelle Handmeldungen und ein Audiorückkanal wirklich benötigt werden. Auf die Implementierung eines Timers sollte vorerst verzichtet werden und dafür den Studierenden mehr Zeit zur Beantwortung der Fragen zur Verfügung gestellt werden.
+%Wenn durch eine erneute Evaluation ähnliche Forderungen gestellt werden, kann über eine Implementierung nachgedacht werden.
+%Dennoch kann der Test als positiv gewertet werden.
+Der Test kann insgesamt positiv resümiert werden.
+Bei Teilnehmern gab es keine Ablehnung gegenüber dieser neuen Art der Vorlesung.
+Der Dozent kann sich vorstellen in Zukunft öfter verteilte Vorlesungen zu halten.%, wenn die oben genannten Optimierungen umgesetzt werden.
+Das entwickelte System hat sehr gut funktioniert, allerdings wünschen sich die Nutzer teilweise
+veränderte Features.%, wie z.B. die Optimierung des Textchats.
+%Die marode Hörsaalaudiotechnik ist negativ aufgefallen und sollte vor einem Einsatz des Systems überprüft und evtl. erneuert werden.
+%Hervorzuheben ist, dass die Testgruppe nur aus ausgewählten Testpersonen bestand, die sehr motiviert und interessiert waren.
+Die Durchführung eines erneuten Tests innerhalb einer realen Vorlesung mit größerem Auditorium ist ratsam.
 
+Starke Integration des Umfragetools kann Sicherheit zum Verständnis der Zuhörer geben.
 
 
 %\bibliographystyle{style/lnig}
