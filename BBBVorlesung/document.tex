@@ -259,6 +259,7 @@ Das Lehrszenarion ``virtuelles Klassenzimmer''
 
 \section{Architektur}
 %comment_tobi: Hier folgen große Überschneidung zu Kapitel Motivation. Wie vereinen wir das? Ich finde meine formulierten Inhalte von oben inzw. fehl am Platz ab der Markierung %comment_tobi. Welche Formulierungen wählen wir nun hier für dieses Kapitel - Luise / Tobias?
+%comment_tobi: Schnell zum abgespeckten Client kommen, der nur zur Interaktion dient. Unterschied zu den am Beamer genutzten Clients (Audio/Video Streams) herausstellen.
 Der prototypische Aufbau sieht vor, dass die Teilnehmergruppen in mehreren Räumen verteilt werden.
 Dabei ist es nicht entscheidend, ob es sich um Hörsäle oder Seminarräume handelt.
 Es müssen lediglich ein einfaches Notebook, ein Beamer und Audiotechnik zur Übertragung der Veranstaltung zur Verfügung stehen.
@@ -319,6 +320,8 @@ Was gibt es für Besonderheiten bei der Implementation?
 
 
 \section{Use Case und Evaluation} %todo Tobi
+%comment_tobi: Fokus der Evaluation auf das Delta setzen, auf das was neu ist, Vorlesungen zu übertragen gibt es schon, der Fokus liegt auf der Einbindung der Interaktionsmöglichkeiten Chat+Umfrage
+%todo Tobi: Legende waagerecht anordnen
 
 Evaluation des Endnutzertests:
 
@@ -330,7 +333,8 @@ Diese wurde über BBB in den Hörsaal übertragen.
 Der Dozent bereitete sich bewusst vor die Funktionen der Anwendung zu nutzen.
 Dafür war eine Anpassung seines Lehrkonzepts notwendig.
 Die 20 Zuhörer wurden aufgefordert, jegliche Kommunikation zum Dozenten ausschließlich über ihr mobiles Endgerät durchzuführen.
-Für den Zugang wurden Quick Response (QR)-Codes im Publikum ausgeteilt.
+Umfrageergebnisse wurden nach Abschluss durch den Dozenten auf der am Beamer sichtbaren Vorlesungsfolie veröffentlicht.
+Für den Systemzugang wurden Quick Response (QR)-Codes im Publikum ausgeteilt.
 Weitere Informationen wurden absichtlich nicht gegeben, damit die Testpersonen möglichst unvoreingenommen die Anwendung testen können.
 %Nach der 25 minütigen Veranstaltung hatten die Testpersonen ausreichend Zeit, die Evaluationsbögen (siehe Anlagen, vgl. [10, S. 8]) auszufüllen.
 
@@ -365,6 +369,8 @@ Abbildung \ref{img:eva-tn} zeigt die Zusammenfassung des formativen Feedbacks de
 
 In Kombination mit einem ausführlichen Evaluationsgespräch ergaben sich folgende Erkenntnisse:
 %comment_tobi: Was lassen wir weg?
+%Diskussion der Punkte: Interpretation, Was sollte man in Zukunft anders machen, Welche Bedeutung hat es für das Lehr-Lenszeanrios?
+% mal überlegen: Gliedern in 3 Abschnitte möglich= eva-usa, eva-chat, eva-umfragen
 
 a) Die Bewertung der Usability und Stabilität der Anwendung fiel durchweg positiv aus.
 
@@ -404,7 +410,7 @@ i) Es besteht vereinzelt der Wunsch  sich virtuell Melden zu können um Aufmerksa
 
 Weitere Details zur Evaluation sowie Schlussfolgerungen finden sich in [Kaufmann 2016] Kapitel 8.
 
-technische Evaluation: 
+technische Evaluation: %vielleicht beim Abschnitt Eva-Usability reinbringen
 
 Im Vergleich mit einem Nutzungsszenario bei dem alle Teilnehmer den mitgelieferten Standard-HTML5 Client des BBB Systems nutzten, konnten Systemanforderungen gesenkt werden (vgl. in Kau2016, Kapitel 7):
 
@@ -416,6 +422,7 @@ b) Die Grundlast des CPU Loads am BBB-Server war im Durchschnitt aus dem gleiche
 c) Wie weit sich das Szenario positiv auf ein Absenken der Netzwerkanforderungen der mobilen Clients im Raum auswirkt konnte nicht betrachtet werden.
 Wir gehen jedoch davon aus, dass die WLAN-Ressourcen bei unserer Lösung vernachlässigbar sind insofern das Netzwerk grundsätzlich für die Aufnahme aller Studierenden im Raum konzipiert ist.
 Schließlich werden pro Request nur wenige Kilobyte Daten getauscht.
+>>> Menge der Daten ist deutlich niedriger weil kein Audio/Video/Heartbeat ausgetauscht wird
 
 %Auswertung der Umfragen: wie gehts kompakter? Stichpunkte, Symbolik?
 %Fragen eventuell weglassen
