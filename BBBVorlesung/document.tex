@@ -184,6 +184,15 @@ Eine Lösung muss aus diesem Zustand heraus schnell einsatzbereit sein.
 \label{sec:arch}
 
 
+\begin{figure}
+	\begin{center}
+		\fbox{\includegraphics[trim=0.2cm 9.8cm 3.7cm 0.15cm,width=1\textwidth,page=5]{../Grafiken/Loesungskonzepte}}
+		\caption{DIAL}
+		\label{dial1}
+	\end{center}
+\end{figure}
+
+
 Der prototypische Aufbau sieht vor, dass die Teilnehmergruppen in mehreren Räumen verteilt werden.
 Dabei ist es nicht entscheidend, ob es sich um Hörsäle oder Seminarräume handelt.
 Es müssen lediglich ein einfaches Notebook, ein Beamer und Audiotechnik zur Übertragung der Veranstaltung zur Verfügung stehen.
@@ -197,31 +206,47 @@ In den Veranstaltungsräumen wird jeweils ein Notebook aufgebaut und ein beliebig
 Die geteilten Inhalte der Dozierenden werden in die Veranstaltungsräume übertragen.
 Der technischen Support sorgt für einen reibungslosen Ablauf während der Veranstaltung.
 
-Der beschriebene Aufbau lässt es nicht zu, dass Studierende aktiv an der Vorlesung teilnehmen.
-Gerade Teilnehmer in entfernten Räumen haben keine Möglichkeit Fragen an die Dozierenden zu stellen oder an Umfragen teilzunehmen.
+%Der beschriebene Aufbau lässt es nicht zu, dass Studierende aktiv an der Vorlesung teilnehmen.
+%Gerade Teilnehmer in entfernten Räumen haben keine Möglichkeit Fragen an die Dozierenden zu stellen oder an Umfragen teilzunehmen.
 
-Ein Betreten der BigBlueButton-Sitzung durch alle Studierenden kann nicht gefordert werden, da die Ansprüche an Nutzerhardware und Netzinfrastruktur zu hoch sind.
+%Ein Betreten der BigBlueButton-Sitzung durch alle Studierenden kann nicht gefordert werden, da die Ansprüche an Nutzerhardware und Netzinfrastruktur zu hoch sind.
 Zum Teil sind Hörsäle auch nicht mit WLAN-Technologie ausgestattet sondern bieten den Dozierenden nur Netzzugang über LAN.
 
 Durch Entwicklung einer Webanwendung konnte erreicht werden, dass die Studierenden über ihr privates Mobile Device an gestarteten Umfragen teilnehmen, Chatnachrichten in den öffentlichen Chat schreiben und diese lesen können, ohne in die BigBlueButton-Sitzung über den Flash- bzw. HTML5-Client einzutreten.
 Da diese Kommunikation nur wenig Bandbreite benötigt, stellt ein Nutzungsszenario über das Mobilfunknetz kein Problem dar.
 
-Die Webanwendung kommuniziert über den Redis-PubSub-Channel mit dem BigBlueButton-Kern (vgl. \cite{Doc16}).
-Durch dieses Verfahren werden Chatnachrichten geschrieben und Umfrageantworten an den BigBlueButton-Server gesendet.
-Für das Abrufen von Informationen wird die MongoDB, die mit dem HTML5-Client mitgeliefert wird, abgefragt.
+%Die Webanwendung kommuniziert über den Redis-PubSub-Channel mit dem BigBlueButton-Kern (vgl. \cite{Doc16}).
+%Durch dieses Verfahren werden Chatnachrichten geschrieben und Umfrageantworten an den BigBlueButton-Server gesendet.
+%Für das Abrufen von Informationen wird die MongoDB, die mit dem HTML5-Client mitgeliefert wird, abgefragt.
 
 %todo luise: 1. Bild von 3 Räumen (in einem der Dozent)
 %todo luise: 2. Bild wie Abb. 6 in BA (2 Schnittstellen: MongoDB und RedisPubSub); mehr Client-Nutzer darstellen; Pfeile stellen Informationsfluß dar; was passiert bei Erweiterung?; welche Komponenten werden angepasst? welche bleiben bestehen?
-Setting
-
-a) Moderator mit Notebook + Video/Mikro
-
-b) Gastgruppen mit Notebook angemeldet; Übertragung per Beamer + Sound
-
-c) Kommunikation der Teilnehmer via ``virtuellen Gruppennutzers'' durch Manipulation des Redis Channels
 
 
 \section{Prototypische Implementation}
+\begin{figure}
+	\begin{center}
+		\fbox{\includegraphics[trim= 0cm 6cm 3cm 0.1cm,width=1\textwidth,page=6]{../Grafiken/Loesungskonzepte}}
+		\caption{Informationsfluss}
+		\label{dial2}
+	\end{center}
+\end{figure}
+%comment_tobi: Ich werde in dem Kapitel nicht abgeholt. Irgendwie fehlt was davor und danch. Vielleicht liegt es an den noch nicht vorhandenen Bildern aus Kapitel Architektur.
+
+Das Videokonferenzsystem BigBlueButton ist ein Client-Server-System und seit 2008 unter der GNU Lesser General Public License verfügbar.
+
+
+\section{Prototypische Implementation}
+
+Von den Entwicklern werden über GitHub sowohl ein Flash-Client, als auch ein auf HTML5 basierender Client zur Verfügung gestellt.
+Neben den Client-Komponenten besteht die BigBlueButton-Anwendung aus weiteren, teils Open Source-, Modulen, wie z.B. Redis, Freeswitch oder Red5.
+Diese Module funktionieren eigenständig und kommunizieren über den zentralen Kommunikationskanal Redis PubSub miteinander.
+Durch Abhören des Kanals können alle Informationen zu BigBlueButton Sitzungen bezogen werden.
+Der modulare Aufbau des Videokonferenzsystems ermöglicht ebenfalls eigene Informationen in die Sitzung zu schleusen.
+Somit ist es möglich einen eigenen Client bzw. ein eigenes Modul zu entwickeln, da der Redis PubSub Channel eine einfache Schnittstelle zum System darstellt.
+
+%Damit die Studierenden...
+
 
 Die Webanwendung basiert auf PHP.
 Um den Redis PubSub Channel ansprechen zu können und valide MongoDB Abfragen zu generieren, müssen serverseitig verschiedene PHP-Erweiterungen installiert werden (vgl. \cite{Kau16}, S.~34).

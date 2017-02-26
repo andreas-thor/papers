@@ -1,1 +1,21 @@
-- Bilderauswahl: vereinfachen, zusammenfassen, SW-Lesbarkeit beachten
+Architektur:
+
+%comment_tobi: Schnell zum abgespeckten Client kommen, der nur zur Interaktion dient. Unterschied zu den am Beamer genutzten Clients (Audio/Video Streams) herausstellen.
+
+In den Veranstaltungsräumen wird jeweils ein Notebook aufgebaut und ein beliebiger anonymer Nutzer tritt ebenfalls der BigBlueButton-Sitzung bei.
+%comment_tobi: Warum anonym? Könnte den Leser verwirren.
+
+prot. Imp:
+
+Die Syntax der Redis-Channel Nachrichten ist immer gleich und setzt sich aus verschiedenen Variablen zusammen.
+%Quelle?
+
+Die Variablenwerte können über API-Aufrufe (vgl. \cite{Doc16}) abgerufen oder frei gewählt werden (z.B. Benutzername).
+
+%comment_tobi: die Infos das wir den Benutzernamen hier frei wählen scheint mir irritierend.
+%comment_tobi: Sätze zusammenfassbar... Die Syntax der Redis-Channel Nachrichten ist immer gleich und setzt sich aus verschiedenen Variablen zusammen, deren Werte über API-Aufrufe (vgl. \cite{Doc16}) am BBB-Server (oder wo?) abgerufen oder frei gewählt werden (z.B. in unserem Szenario der Benutzername).
+
+Alle für die Anwendung relevanten Sitzungsinformationen befinden sich in der MongoDB-Datenbank \textit{meteor} unter den Collections \textit{bbb\_chat} und \textit{bbb\_poll}.
+%comment_tobi: Was bringt dieser Satz? Kontext fehlt mir.
+%comment_tobi: Meinst du?: Alle für die Webanwendung relevanten Sitzungsinformationen werden bei Bedarf aus der MongoDB-Datenbank \textit{meteor} unter den Collections \textit{bbb\_chat} und \textit{bbb\_poll} abgerufen.
+%comment_tobi: Verweis auf Quelle Kaufmann 2016 Abschnitt 6.6.3 oder ähnlich verweisen
