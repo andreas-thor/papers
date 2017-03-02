@@ -259,6 +259,76 @@ Auf den Client-Endgeräten muss, neben einem Webbrowser, keine zusätzliche Softwa
 
 \section{Use Case und Evaluation}
 
+\label{sec:eval}
+
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=12.7cm]{../Evaluationsergebnisse/Teilnehmerauswertung_Evaluation_Verteilte_Vorlesung.png}
+	\includegraphics[width=12.5cm]{../Evaluationsergebnisse/Teilnehmerauswertung_Evaluation_Verteilte_Vorlesung_Legende.png}
+	\caption{Ergebnisse des formativen Feedbacks der Teilnehmer}
+	\label{img:eva-tn}
+\end{figure}
+
+
+DIAL wurde im Rahmen einer Vorlesungsveranstaltung an der Hochschule für
+Telekommunikation Leipzig (HfTL) mit ingesamt 20 Studierenden in zwei Räumen
+eingesetzt.
+Abbildung~\ref{img:eva-tn} zeigt die Zusammenfassung des formativen Feedbacks
+der Teilnehmer, die zusätzlich in einer Gruppendiskussion ihre Erfahrungen
+äußerten.
+Während der gesamten Vorlesung wurde die eingesetzte Infrastruktur 
+permanent überwacht. Sowohl die Webanwendung als auch BigBlueButton mit
+der DIAL-Erweiterung liefen fehlerfrei und konnten von Studierenden und dem
+Dozenten problemlos genutzt werden.
+Die Analyse der Auslastung (Datenverkehr,
+Server-Load) bestätigte die deutlich niedrigeren
+Anforderungen im Vergleich zur normalen Nutzung eines Webkonferenzsystems 
+(siehe auch~\cite{Kau16} für Details und weitere Evaluationsergebnisse).
+
+
+Wie üblich bei Live-Vorlesungen stellt der (im Vergleich zur normalen
+Vorlesung) höhere technische Aufwand hohe Ansprüche an den Dozenten und ggf. das
+unterstützende Personal.
+Besonders nachteilig ist aus Sicht des Dozenten
+das fehlende non-verbale Feedback der Studierenden in den entfernten Räumen. 
+Dies unterstreicht noch einmal die Wichtigkeit der Kommunikationsmöglichkeit
+zwischen (allen) Studierenden und dem Dozenten.
+Die Studierenden nutzten daher den Textchat der Webanwendungen vornehmlich für
+Fragen an den Dozenten, sahen aber Verbesserungsbedarf bezüglich deren
+Beantwortung. Die verzögerte Beantwortung sowie die fehlende Rückkopplung, ob
+der Dozent die Frage bemerkt und richtig verstanden hat, wurden kritisiert.
+Da der Textchat für alle Studierenden lesbar war, konnten
+einige Fragen bereits in Kleingruppen innerhalb der Studierendengruppe geklärt
+werden, was aber wiederum dem Dozenten 
+
+
+
+Besonders positiv wurden die Umfragen von den Studierenden bewertet, 
+die aus Sicht des Dozenten gleichzeitig zwei Funktionen hatten.
+Primär erlaubten sie dem 
+Dozenten Fragen (z.B. in Multiple-Choice-Form) zu stellen, um das Verständnis
+der Studierenden für den weiteren Verlauf der Vorlesung zu sichern. 
+Gleichzeitig konnte der Dozent die Zeit, während die Studierenden die Frage
+beantworten, nutzen, um den Textchat zu lesen und im Anschluss ggf. darauf
+einzugehen. Das Feedback der Studierenden zeigt auch, dass sie tendenziell mehr
+Zeit zur Beantwortung der Fragen wünschen, was dem Dozenten wiederum mehr Zeit
+zum Lesen gibt. Dozenten sollten also bei dieser Art der Vorlesung ihr
+didaktisches Konzept so anpassen, dass in regelmäßigen Abständen Umfragen
+möglich sind und ggf. auch kommunizieren, dass nach Umfragen auch auf Fragen des
+Textchats eingegangen werden kann, um so die Erwartungshaltung der Studierenden
+auszurichten.
+
+
+Insgesamt wurde die Live-Übertragung mit DIAL als sehr positiv bewertet.
+Um die Kommunikation zwischen Studierenden und Dozentem weiter zu verbessern, 
+wünschten sich die Teilnehmer  strukturiertes Feedback über die Webanwendung
+geben zu können, z.B. für eine Handmeldung oder einen Hinweis, dass der Stoff zu
+schnell wird.
+
+
+\begin{comment}
+
 %comment_tobi: Fokus der Evaluation auf das Delta setzen, auf das was neu ist, Vorlesungen zu übertragen gibt es schon, der Fokus liegt auf der Einbindung der Interaktionsmöglichkeiten Chat+Umfrage
 \label{sec:eval}
 Um die Usability und Funktionen zu testen, wurden 20 Teilnehmer zwischen Hörsaal und Seminarraum wie voran skizziert aufgeteilt.
@@ -352,6 +422,9 @@ Weitere Details zur Evaluation sowie Schlussfolgerungen finden sich in \cite{Kau
 %Wir gehen jedoch davon aus, dass die WLAN-Ressourcen bei unserer Lösung vernachlässigbar sind insofern das Netzwerk grundsätzlich für die Aufnahme aller Studierenden im Raum konzipiert ist.
 %Schließlich werden pro Request nur wenige Kilobyte Daten getauscht.
 %>>> Menge der Daten ist deutlich niedriger weil kein Audio/Video/Heartbeat ausgetauscht wird
+
+
+\end{comment}
 
 
 \section{Zusammenfassung und Ausblick}
