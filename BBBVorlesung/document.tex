@@ -239,7 +239,6 @@ Da diese Kommunikation nur wenig Bandbreite benötigt, stellt auch ein Nutzungssz
 		\label{dial2}
 	\end{center}
 \end{figure}
-%comment_tobi: Ich werde in dem Kapitel nicht abgeholt. Irgendwie fehlt was davor und danch. Vielleicht liegt es an den noch nicht vorhandenen Bildern aus Kapitel Architektur.
 
 Das Videokonferenzsystem BigBlueButton ist ein Client-Server-System und seit 2008 unter der GNU Lesser General Public License verfügbar.
 
@@ -303,15 +302,11 @@ Beantwortung. Die verzögerte Beantwortung sowie die fehlende Rückkopplung, ob
 der Dozent die Frage bemerkt und richtig verstanden hat, wurden kritisiert.
 Da der Textchat für alle Studierenden lesbar war, konnten
 einige Fragen bereits in Kleingruppen innerhalb der Studierendengruppe geklärt
-werden, was aber wiederum dem Dozenten 
-
-
+werden, was aber wiederum dem Dozenten entging.
 
 Besonders positiv wurden die Umfragen von den Studierenden bewertet, 
 die aus Sicht des Dozenten gleichzeitig zwei Funktionen hatten.
-Primär erlaubten sie dem 
-Dozenten Fragen (z.B. in Multiple-Choice-Form) zu stellen, um das Verständnis
-der Studierenden für den weiteren Verlauf der Vorlesung zu sichern. 
+Primär erlaubten sie dem  Dozenten Fragen (z.B. in Multiple-Choice-Form) zu stellen, um das Verständnis der Studierenden für den weiteren Verlauf der Vorlesung zu sichern. 
 Gleichzeitig konnte der Dozent die Zeit, während die Studierenden die Frage
 beantworten, nutzen, um den Textchat zu lesen und im Anschluss ggf. darauf
 einzugehen. Das Feedback der Studierenden zeigt auch, dass sie tendenziell mehr
@@ -324,15 +319,13 @@ auszurichten.
 
 
 Insgesamt wurde die Live-Übertragung mit DIAL als sehr positiv bewertet.
-Um die Kommunikation zwischen Studierenden und Dozentem weiter zu verbessern, 
-wünschten sich die Teilnehmer  strukturiertes Feedback über die Webanwendung
-geben zu können, z.B. für eine Handmeldung oder einen Hinweis, dass der Stoff zu
-schnell wird.
+Um die Kommunikation zwischen Studierenden und Dozenten weiter zu verbessern, 
+wünschten sich die Teilnehmer strukturiertes Feedback über die Webanwendung
+geben zu können, z.B. Multiple statt Single Choice Antworten; Emoticons für eine Handmeldung oder einen Hinweis, dass der Stoff zu schnell wird.
 
 
 \begin{comment}
 
-%comment_tobi: Fokus der Evaluation auf das Delta setzen, auf das was neu ist, Vorlesungen zu übertragen gibt es schon, der Fokus liegt auf der Einbindung der Interaktionsmöglichkeiten Chat+Umfrage
 \label{sec:eval}
 Um die Usability und Funktionen zu testen, wurden 20 Teilnehmer zwischen Hörsaal und Seminarraum wie voran skizziert aufgeteilt.
 Der Dozent integrierte bewusst die Nutzung der Anwendung in sein Lehrkonzept.
@@ -368,9 +361,6 @@ Abbildung \ref{img:eva-tn} zeigt die Zusammenfassung des formativen Feedbacks de
 	\label{img:eva-tn}
 \end{figure}
 In Kombination mit einem ausführlichen Evaluationsgespräch ergaben sich folgende Erkenntnisse:
-%comment_tobi: Was lassen wir weg?
-%Diskussion der Punkte: Interpretation, Was sollte man in Zukunft anders machen, Welche Bedeutung hat es für das Lehr-Lenszeanrios?
-% mal überlegen: Gliedern in 3 Abschnitte möglich= eva-usa, eva-chat, eva-umfragen
 
 Usability: Die Bewertung fiel durchweg positiv aus.
 Die Anwendung ist einfach zugänglich und läuft stabil, auch aus dem Standy-By des Endgerätes heraus.
@@ -436,6 +426,15 @@ Weitere Details zur Evaluation sowie Schlussfolgerungen finden sich in \cite{Kau
 
 %Redundanz ist OK - gleiche Begrifflichkeiten verwenden.
 
+Mit  DIAL wurde ein Prototyp zur Durchführung verteilter, standortunabhängiger Vorlesungen geschaffen. Dazu wurde das Open Source Konferenzsystem BigBlueButton um  Komponenten erweitert, die den Vorlesungsteilnehmern Zugang zum Chat- und Umfragesystem ermöglichen.
+Beim Design der Komponenten ist es gelungen ressourcenschonend zu kommunizieren um die mobilen Endgeräte der Teilnehmer bzw. die vorhandene Netzinfrastruktur so wenig wie nötig zu belasten.
+Nach dem Praxistest zeigten sich Teilnehmer sowie Dozent offen für Vorlesungen dieser Art, das System und die grundlegende Idee dahinter wurden positiv bewertet.
+Es wurde deutlich, dass der Dozent seine Vorlesungsdidaktik systembedingt neu konzipieren muss.
+Gleichzeitig brachte die Evaluation den Wunsch nach weiteren strukturierten Interaktionsmöglichkeiten mit dem Dozenten hervor (bspw. Emoticons).
+Dazu ist die geschaffene Schnittstelle zum Redis PubSub Channel entsprechend zu erweitern. Das Design von DIAL erlaubt damit auch zukünftige Anpassungen.
+
+
+
 %Gerade das studentische Feedback hat gezeigt, dass noch einige Funktionen der Anwendung verbessert werden müssen, bevor das System endgültig für verteilte Vorlesungen genutzt werden kann.
 %Besonders die Einführung von Multiple Choice Antworten und die Neugestaltung der Chatmenüs sind sinnvoll.
 %Auch sollte es möglich werden, Hyperlinks über den Chat generieren zu können.
@@ -443,17 +442,17 @@ Weitere Details zur Evaluation sowie Schlussfolgerungen finden sich in \cite{Kau
 %Ebenfalls ist zu prüfen, ob virtuelle Handmeldungen und ein Audiorückkanal wirklich benötigt werden. Auf die Implementierung eines Timers sollte vorerst verzichtet werden und dafür den Studierenden mehr Zeit zur Beantwortung der Fragen zur Verfügung gestellt werden.
 %Wenn durch eine erneute Evaluation ähnliche Forderungen gestellt werden, kann über eine Implementierung nachgedacht werden.
 %Dennoch kann der Test als positiv gewertet werden.
-Der Test kann insgesamt positiv resümiert werden.
-Bei Teilnehmern gab es keine Ablehnung gegenüber dieser neuen Art der Vorlesung.
-Der Dozent kann sich vorstellen in Zukunft öfter verteilte Vorlesungen zu halten. %, wenn die oben genannten Optimierungen umgesetzt werden.
-Das entwickelte System hat sehr gut funktioniert, allerdings wünschen sich die Nutzer teilweise
-veränderte Features. %, wie z.B. die Optimierung des Textchats.
+%Der Test kann insgesamt positiv resümiert werden.
+%Bei Teilnehmern gab es keine Ablehnung gegenüber dieser neuen Art der Vorlesung.
+%Der Dozent kann sich vorstellen in Zukunft öfter verteilte Vorlesungen zu halten. %, wenn die oben genannten Optimierungen umgesetzt werden.
+%Das entwickelte System hat sehr gut funktioniert, allerdings wünschen sich die Nutzer teilweise
+%veränderte Features. %, wie z.B. die Optimierung des Textchats.
 %Die marode Hörsaalaudiotechnik ist negativ aufgefallen und sollte vor einem Einsatz des Systems überprüft und evtl. erneuert werden.
 %Hervorzuheben ist, dass die Testgruppe nur aus ausgewählten Testpersonen bestand, die sehr motiviert und interessiert waren.
-Die Durchführung eines erneuten Tests innerhalb einer realen Vorlesung mit größerem Auditorium ist ratsam.
+%Die Durchführung eines erneuten Tests innerhalb einer realen Vorlesung mit größerem Auditorium ist ratsam.
 
-Es besteht vereinzelt der Wunsch  sich virtuell Melden zu können um Aufmerksamkeit zu erregen.
-Starke Integration des Umfragetools kann Sicherheit zum Verständnis der Zuhörer geben.
+%Es besteht vereinzelt der Wunsch  sich virtuell Melden zu können um Aufmerksamkeit zu erregen.
+%Starke Integration des Umfragetools kann Sicherheit zum Verständnis der Zuhörer geben.
 
 
  \bibliographystyle{lnig}
