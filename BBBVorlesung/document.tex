@@ -246,7 +246,7 @@ Da die komplette Kommunikation über den Redis PubSub läuft, ist eine manuelle Ma
 %Somit ist es möglich einen eigenen Client bzw. ein eigenes Modul zu entwickeln, da der Redis PubSub Channel eine einfache Schnittstelle zum System darstellt.
 %Der Kommunikationskanal stellt somit die Schnittstelle zu DIAL dar.
 
-Damit auf den mobilen Endgeräten die use cases \textit{Chatnachrichten lesen}, \textit{eigene Chatnachricht schreiben}, \textit{Umfrageantwortmöglichkeiten anzeigen} und \textit{an der Umfrage teilnehmen} abgebildet werden, bewältigt DIAL zwei Aufgaben (vgl. \autoref{dial2}).
+Damit auf den mobilen Endgeräten die Funktionen \textit{Chat lesen}, \textit{Chat schreiben}, \textit{Abfrage von Umfragen} und \textit{Teilnahme an Umfragen} abgebildet werden, bewältigt DIAL zwei Aufgaben (vgl. \autoref{dial2}).
 Zum einen werden Informationen aus der MongoDB gelesen und zum anderen werden Channelnachrichten mit richtiger Syntax in den RedisPubSub geschrieben.
 Dabei fungiert die DIAL Schnittstelle als Vermittler zwischen den mobilen DIAL-Clients und dem BigBlueButton-Kern.
 %  PHP bietet für die beschriebenen Anwendungsfälle bereits fertige Erweiterungen an, die serverseitig installiert werden müssen (vgl. \cite{Kau16}, S.~34). 
