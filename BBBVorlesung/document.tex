@@ -194,11 +194,10 @@ An der Hochschule für Telekommunikation Leipzig wurde auf das Videokonferenzsyst
 \begin{figure}
 	\begin{center}
 		\fbox{\includegraphics[trim=0.2cm 9.5cm 1cm 0.15cm,width=1\textwidth,page=5]{../Grafiken/Loesungskonzepte}}
-		\caption{DIAL}
+		\caption{DIAL Prinzip}
 		\label{dial1}
 	\end{center}
 \end{figure}
-
 
 Der prototypische Aufbau sieht vor, dass die Teilnehmergruppen in mehreren Räumen verteilt werden, siehe \autoref{dial1}.
 Dabei ist es nicht entscheidend, ob es sich um Hörsäle oder Seminarräume handelt.
@@ -206,7 +205,7 @@ Es müssen lediglich ein einfaches Notebook, ein Beamer und Audiotechnik zur Über
 
 Die Dozierenden können in einem der Veranstaltungsräume oder dezentral die Lehrveranstaltung lesen.
 Dafür wird eine BigBlueButton-Sitzung initiiert und die Dozierenden treten dieser mit Moderationsrechten bei.
-Dabei können Whiteboard, Präsentationsfolien, Anwendungen, das eigene Video und der Audiostrom zum BigBlueButton-Server übertragen werden.
+Dabei können Whiteboard, Präsentationsfolien, geteilte Anwendungen, das eigene Video und der Audiostrom zum BigBlueButton-Server übertragen werden.
 
 In den Veranstaltungsräumen wird jeweils ein Notebook aufgebaut und ein beliebiger anonymer Nutzer tritt ebenfalls der BigBlueButton-Sitzung bei.
 
@@ -234,29 +233,36 @@ Da diese Kommunikation nur wenig Bandbreite benötigt, stellt auch ein Nutzungssz
 \begin{figure}
 	\begin{center}
 		\fbox{\includegraphics[trim= 0cm 7.5cm 3cm 0.1cm,width=1\textwidth,page=6]{../Grafiken/Loesungskonzepte}}
-		\caption{Informationsfluss}
+		\caption{Informationsfluss, links: Smartphone eines Studenten, rechts: Notebook des Dozenten}
 		\label{dial2}
 	\end{center}
 \end{figure}
 
-Das Videokonferenzsystem BigBlueButton ist ein Client-Server-System und seit 2008 unter der GNU Lesser General Public License verfügbar.
-
-Von den Entwicklern werden über GitHub sowohl ein Flash-Client, als auch ein auf HTML5 basierender Client zur Verfügung gestellt.
-Neben den Client-Komponenten besteht die BigBlueButton-Anwendung aus weiteren, teils Open Source-, Modulen, wie z.B. Redis, Freeswitch oder Red5.
+%Das Videokonferenzsystem BigBlueButton ist ein Client-Server-System und seit 2008 unter der GNU Lesser General Public License verfügbar.
+Von den BigBlueButton-Entwicklern wird über GitHub der komplette BigBlueButton-Kern (vgl. \autoref{dial2}) zur Verfügung gestellt.
+Neben Client-Komponenten besteht die BigBlueButton-Anwendung aus weiteren, teils Open Source-, Modulen, wie z.B. Redis, Freeswitch oder Red5.
 Diese Module funktionieren eigenständig und kommunizieren über den zentralen Kommunikationskanal Redis PubSub miteinander.
-Durch Abhören des Kanals können alle Informationen zu BigBlueButton Sitzungen bezogen werden.
-Der modulare Aufbau des Videokonferenzsystems ermöglicht ebenfalls eigene Informationen in die Sitzung zu schleusen.
-Somit ist es möglich einen eigenen Client bzw. ein eigenes Modul zu entwickeln, da der Redis PubSub Channel eine einfache Schnittstelle zum System darstellt.
+%Durch Abhören des Kanals können alle Informationen zu BigBlueButton Sitzungen bezogen werden.
+Der modulare Aufbau ermöglicht eine Erweiterung des Systems um eigene Komponenten.
+%ein Abhören und Verändern des Kommunikationsflusses.
+Da die komplette Kommunikation über den Redis PubSub läuft, ist eine manuelle Manipilation der übertragenen Daten möglich.
+%Somit ist es möglich einen eigenen Client bzw. ein eigenes Modul zu entwickeln, da der Redis PubSub Channel eine einfache Schnittstelle zum System darstellt.
+%Der Kommunikationskanal stellt somit die Schnittstelle zu DIAL dar.
 
-Damit auf den mobilen Endgeräten die use cases \textit{Chatnachrichten lesen}, \textit{eigene Chatnachricht schreiben}, \textit{Umfrageantwortmöglichkeiten anzeigen} und \textit{an der Umfrage teilnehmen} abgebildet werden können, müssen zwei Aufgaben im entwickelten Modul bewältigt werden (vgl. \autoref{dial2}).
-Zum einen müssen Informationen aus der MongoDB gelesen werden und zum anderen müssen Channelnachrichten mit richtiger Syntax in den RedisPubSub geschrieben werden.
-PHP bietet für die beschriebenen Anwendungsfälle bereits fertige Erweiterungen an, die serverseitig installiert werden müssen (vgl. \cite{Kau16}, S.~34). 
+Damit auf den mobilen Endgeräten die use cases \textit{Chatnachrichten lesen}, \textit{eigene Chatnachricht schreiben}, \textit{Umfrageantwortmöglichkeiten anzeigen} und \textit{an der Umfrage teilnehmen} abgebildet werden, bewältigt DIAL zwei Aufgaben (vgl. \autoref{dial2}).
+Zum einen werden Informationen aus der MongoDB gelesen und zum anderen werden Channelnachrichten mit richtiger Syntax in den RedisPubSub geschrieben.
+Dabei fungiert die DIAL Schnittstelle als Vermittler zwischen den mobilen DIAL-Clients und dem BigBlueButton-Kern.
+%  PHP bietet für die beschriebenen Anwendungsfälle bereits fertige Erweiterungen an, die serverseitig installiert werden müssen (vgl. \cite{Kau16}, S.~34). 
 
-Die Syntax der Redis-Channel Nachrichten ist immer gleich und setzt sich aus verschiedenen Variablen zusammen.
+Beim Abhören des Redis PubSub ist die Syntax der Channel-Nachrichten erkennbar.
+Diese ist immer gleich und setzt sich aus verschiedenen Variablen zusammen.
 Die Variablenwerte können über API-Aufrufe (vgl. \cite{Doc16}) abgerufen oder teilweise frei gewählt bzw. generiert werden (z.B. Benutzername und Uhrzeit).
+
 Alle für die Anwendung relevanten Sitzungsinformationen befinden sich in der MongoDB-Datenbank \textit{meteor} unter den Collections \textit{bbb\_chat} und \textit{bbb\_poll}.
 
-Auf den Client-Endgeräten muss, neben einem Webbrowser, keine zusätzliche Software installiert werden.
+Auf den Client-Endgeräten wird, neben einem Webbrowser, keine zusätzliche Software installiert.
+
+Das beschriebene DIAL-System funktioniert unabhängig von Änderungen am BigBlueButton-Kern, solange das Nachrichtenformat des Redis PubSub und die Speicherung der Sitzungsdaten in der MongoDB gleich bleiben.
 
 \section{Use Case und Evaluation}
 
