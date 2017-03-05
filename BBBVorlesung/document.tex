@@ -237,27 +237,28 @@ Da diese Kommunikation nur wenig Bandbreite benötigt, stellt auch ein Nutzungssz
 
 %Das Videokonferenzsystem BigBlueButton ist ein Client-Server-System und seit 2008 unter der GNU Lesser General Public License verfügbar.
 Von den BigBlueButton-Entwicklern wird über GitHub der komplette BigBlueButton-Kern (vgl. \autoref{dial2}) zur Verfügung gestellt.
-Neben Client-Komponenten besteht die BigBlueButton-Anwendung aus weiteren, teils Open Source-, Modulen, wie z.B. Redis, Freeswitch oder Red5.
+Die Dozentenrechner und die Clientrechner zur Hörsaalübertragung (siehe Notebook in \autoref{dial2}) betreten die Veranstaltung über einen der mitgelieferten Standard-Clients.
+Neben den Client-Komponenten besteht die BigBlueButton-Anwendung aus weiteren, teils Open Source-, Modulen, wie z.B. Redis, Freeswitch oder Red5.
 Diese Module funktionieren eigenständig und kommunizieren über den zentralen Kommunikationskanal Redis PubSub miteinander.
 %Durch Abhören des Kanals können alle Informationen zu BigBlueButton Sitzungen bezogen werden.
-Der modulare Aufbau ermöglicht eine Erweiterung des Systems um eigene Komponenten.
+Der modulare Aufbau ermöglicht eine Erweiterung des Systems um eigene Komponenten, wie in \autoref{dial2} die DIAL Serverschnittstelle.
 %ein Abhören und Verändern des Kommunikationsflusses.
 Da die komplette Kommunikation über den Redis PubSub läuft, ist eine manuelle Manipilation der übertragenen Daten möglich.
 %Somit ist es möglich einen eigenen Client bzw. ein eigenes Modul zu entwickeln, da der Redis PubSub Channel eine einfache Schnittstelle zum System darstellt.
 %Der Kommunikationskanal stellt somit die Schnittstelle zu DIAL dar.
 
-Damit auf den mobilen Endgeräten die Funktionen \textit{Chat lesen}, \textit{Chat schreiben}, \textit{Abfrage von Umfragen} und \textit{Teilnahme an Umfragen} abgebildet werden, bewältigt DIAL zwei Aufgaben (vgl. \autoref{dial2}).
+Auf den DIAL-Clients (siehe Smartphone in \autoref{dial2}) wird, neben einem Webbrowser, keine zusätzliche Software installiert.
+Die serverseitige DIAL-Schnittstelle fungiert als Vermittler zwischen den mobilen Clients und dem BigBlueButton-Kern.
+Die Schnittstelle bewältigt zwei Aufgaben, damit die Funktionen \textit{Chat lesen}, \textit{Chat schreiben}, \textit{Abfrage von Umfragen} und \textit{Teilnahme an Umfragen} abbildbar sind.
+%Damit auf den mobilen Endgeräten die Funktionen \textit{Chat lesen}, \textit{Chat schreiben}, \textit{Abfrage von Umfragen} und \textit{Teilnahme an Umfragen} abgebildet werden, bewältigt DIAL zwei Aufgaben (vgl. \autoref{dial2}).
 Zum einen werden Informationen aus der MongoDB gelesen und zum anderen werden Channelnachrichten mit richtiger Syntax in den RedisPubSub geschrieben.
-Dabei fungiert die DIAL Schnittstelle als Vermittler zwischen den mobilen DIAL-Clients und dem BigBlueButton-Kern.
+%Dabei fungiert die DIAL Schnittstelle als Vermittler zwischen den mobilen DIAL-Clients und dem BigBlueButton-Kern.
 %  PHP bietet für die beschriebenen Anwendungsfälle bereits fertige Erweiterungen an, die serverseitig installiert werden müssen (vgl. \cite{Kau16}, S.~34). 
-
 Beim Abhören des Redis PubSub ist die Syntax der Channel-Nachrichten erkennbar.
 Diese ist immer gleich und setzt sich aus verschiedenen Variablen zusammen.
 Die Variablenwerte können über API-Aufrufe (vgl. \cite{Doc16}) abgerufen oder teilweise frei gewählt bzw. generiert werden (z.B. Benutzername und Uhrzeit).
 
-Alle für die Anwendung relevanten Sitzungsinformationen befinden sich in der MongoDB-Datenbank \textit{meteor} unter den Collections \textit{bbb\_chat} und \textit{bbb\_poll}.
-
-Auf den Client-Endgeräten wird, neben einem Webbrowser, keine zusätzliche Software installiert.
+%Alle für die Anwendung relevanten Sitzungsinformationen befinden sich in der MongoDB-Datenbank \textit{meteor} unter den Collections \textit{bbb\_chat} und \textit{bbb\_poll}.
 
 Das beschriebene DIAL-System funktioniert unabhängig von Änderungen am BigBlueButton-Kern, solange das Nachrichtenformat des Redis PubSub und die Speicherung der Sitzungsdaten in der MongoDB gleich bleiben.
 
