@@ -48,7 +48,7 @@ Die Arbeit zeigt das grundlegende Design von DIAL, geht dabei auf die verwendete
 
 \end{abstract}
 \begin{keywords}
-E-Learning, BigBlueButton, verteilte Vorlesung, Evaluation
+E-Learning, BigBlueButton, Interaktion, verteilte Vorlesung, Kommunikation
 \end{keywords}
 
 
@@ -56,12 +56,12 @@ E-Learning, BigBlueButton, verteilte Vorlesung, Evaluation
 
 \section{Motivation}
 
-Die Live-Übertragung von Vorlesungen~\cite{ETeach} per Videokonferenz ist ein weit verbreitet eingesetztes Mittel, um Studierenden an unterschiedlichen Orten (z.B. Hörsäle der gleichen oder einer anderen Hochschule) die Teilnahme an der gleichen Lehrveranstaltung zu ermöglichen.
+Die Live-Übertragung von Vorlesungen per Videokonferenz ist ein weit verbreitet eingesetztes Mittel~\cite{ETeach}, um Studierenden an unterschiedlichen Orten (z.B. Hörsäle der gleichen oder einer anderen Hochschule) die Teilnahme an der gleichen Lehrveranstaltung zu ermöglichen.
 Hochschulen reagieren damit auf die immer größere Zahl an Studierenden\cite{Sta16} und die damit einhergehenden Ressourcenengpässe.
-Bauliche und räumliche Beschränkungen der Hochschulgebäude (``Platzprobleme'') erlauben es bei teilnehmerstarken Studiengängen nicht mehr, dass alle Studierenden physisch an der selben Lehrveranstaltung teilnehmen können. 
-Eine Aufteilung von Studiengruppen, bei der Dozenten ihre Lehrveranstaltungen mehrfach halten, stößt schnell an die Grenzen des Lehrdeputats der jeweiligen Dozenten und wirft durch die Vergrößerung der Lehrveranstaltungszahl weitere Probleme hinsichtlich der Belegung der Hörsäle auf.
+Bauliche und räumliche Beschränkungen der Hochschulgebäude (,,Platzprobleme'') erlauben es bei teilnehmerstarken Studiengängen nicht mehr, dass alle Studierenden physisch an der selben Lehrveranstaltung teilnehmen können. 
+Eine Aufteilung von Studiengruppen, bei der Dozierende ihre Lehrveranstaltungen mehrfach halten, stößt schnell an die Grenzen des Lehrdeputats der jeweiligen Dozierenden und wirft durch die Vergrößerung der Lehrveranstaltungszahl weitere Probleme hinsichtlich der Belegung der Hörsäle auf.
 
-Gleichzeitig ermöglicht die Live-Übertragung (neben anderen E-Teaching-Aktivitäten wie Vorlesungsaufzeichnungen etc.) Möglichkeiten zur Kooperation von Hochschulen bzw. Standorten.
+Gleichzeitig ermöglicht die Live-Übertragung (neben anderen E-Teaching-Aktivitäten wie Vorlesungsaufzeichnungen etc.) Kooperation von Hochschulen bzw. Standorten.
 Wenn zuvor mehrfach gehaltene Lehrveranstaltungen nur noch einmalig an einer Hochschule bzw. an einem Standort durchgeführt werden, können die resultierenden Synergieeffekte zu finanziellen Entlastungen führen.
 Zusätzlich ermöglichen Live-Übertragungen die Erweiterung des Curriculums für Studierende, die nun an Vorlesungen teilnehmen können, die zuvor an Ihrer Hochschule nicht angeboten wurden.
 
@@ -76,24 +76,25 @@ Hier bieten Live-Übertragungen für Dozenten der HfTL die Möglichkeit,
 Lehrveranstaltungen mit ``ihren'' Studierenden durchzuführen.   
 \end{comment}
 
-Die Teilnahme an einer live übertragenden Vorlesung stellt für den Studierenden keinen zusätzlichen Aufwand dar, sie nimmt ihm aber -- im Vergleich zur klassischen Vorlesung -- Möglichkeiten zur Interaktion, da Studierende keinen eigenen Kommunikationskanal zum Dozenten haben.
-Fragen können in der Regel nur ``moderiert'' gestellt werden, bei dem ein Moderator im entfernten Standort die Frage entgegen nimmt und zum Dozenten asynchron (via Textchat) oder synchron (in Absprache mit den anderen Standorten) weiterleitet.
+Die Teilnahme an einer live übertragenden Vorlesung stellt für die Studierenden keinen zusätzlichen Aufwand dar, sie nimmt ihm aber -- im Vergleich zur klassischen Vorlesung -- Möglichkeiten zur Interaktion, da Studierende keinen eigenen Kommunikationskanal zum Dozenten haben.
+Fragen können in der Regel nur ,,moderiert'' gestellt werden, bei dem ein Moderator im entfernten Standort die Frage entgegen nimmt und zum Dozenten asynchron (via Textchat) oder synchron (in Absprache mit den anderen Standorten) weiterleitet.
 Im Gegensatz dazu bieten virtuelle Klassenzimmer, bei denen Studierende über ein Webkonferenzsystem (z.B. Adobe Connect oder WebEx) an einer Lehrveranstaltung (Webkonferenz) teilnehmen \cite{plattformen}, vielfältige Interaktionsmöglichkeiten, wie z.B. einen Textchat und die Teilnahme an Umfragen.
-Zusätzlich können die Studierenden über Mikrofon (und Webcam) ihre Fragen direkt an den Dozenten stellen.
+Zusätzlich können die Studierenden über Mikrofon (und Webcam) ihre Fragen direkt an die Dozierenden stellen.
 
-Der Einsatz eines Webkonferenzsystems für die Live-Übertragung scheitert jedoch in der Regel an dessen höheren technischen Anforderungen in einem Hörsaal.
-Würde sich jeder Studierende mit seinem Endgerät (Notebook, Tablet etc.) im Hörsaal in die Webkonferenz einwählen, sendet der Server das Audio-, Video-, und Whiteboardsignal an alle Studierende, was eine sehr große Beanspruchung des Hochschul-WLANs zur Folge hat inklusive erwartbarer Aussetzer bzw. Ausfälle.
-Ein Verbindungsabbruch zwingt dann in der Regel zur Neuanmeldung in der Webkonferenz und stellt eine unnötige Ablenkung für die Studierenden dar.
-Ein weiterer praktischer Nachteil ist der vergleichsweise hohe Stromverbrauch der Endgeräte beim dauerhaften Video- und Audio-Streaming, so dass Studierende gezwungen sind, ihre Endgeräte mit Strom zu versorgen, was in vielen Hörsälen nicht für alle Teilnehmer möglich ist. 
+Der Einsatz eines Webkonferenzsystems für die Live-Übertragung scheitert in der Regel an dessen höheren technischen Anforderungen in einem Hörsaal. 
+Würde sich jeder Studierende mit seinem Endgerät (Notebook, Tablet etc.) im Hörsaal in die Webkonferenz einwählen, sendet der Server Medienstreams (Audio, Video, Whiteboard) an alle Studierende, was eine sehr große Beanspruchung des Hochschul-WLANs inklusive erwartbarer Aussetzer bzw. Ausfälle zur Folge hat.
+Ein Verbindungsabbruch zwingt in der Regel zur Neuanmeldung in der Webkonferenz und stellt eine unnötige Ablenkung für die Studierenden dar. 
+Ein weiterer Nachteil ist ein hoher Stromverbrauch der Endgeräte beim dauerhaften Medienstreaming.
+Somit sind die Studierenden gezwungen, ihre Endgeräte mit Strom zu versorgen, was in vielen Hörsälen nicht für alle Teilnehmer möglich ist.
 
 Dieser Beitrag präsentiert DIAL, ein BigBlueButton-basiertes System für interaktive Live-Übertragungen von Vorlesungen. 
-Dazu wurde das Open-Source-Webkonferenzsystem BigBlueButton so erweitert, dass Medien-Streams von der Nutzerinteraktion via Textchat und Umfragen getrennt verfügbar sind.
-Damit genügt es, dass nur ein Endgerät pro Standort (Hörsaal) als "`normaler"' Teilnehmer der Webkonferenz beitritt und den Audio- und Videostream per Lautsprecher bzw. Beamer in den Hörsaal verteilt.
-Studierende greifen aus dem Stand-By heraus mit einer eigens entwickelten App auf die Textchat- und Umfragefunktionalität zu und können so jederzeit in der Vorlesung interagieren.
+Dazu wurde das Open-Source-Videokonferenzsystem BigBlueButton so erweitert, dass Medienstreams von der Nutzerinteraktion via Textchat und Umfragen getrennt verfügbar sind.
+Damit genügt es, dass nur ein Endgerät pro Standort (Hörsaal) als ,,normaler'' Teilnehmer der Webkonferenz beitritt und die Medienstreams per Lautsprecher bzw. Beamer in den Hörsaal verteilt.
+Studierende greifen aus dem Stand-By heraus mit einer eigens entwickelten App auf die Textchat- und Umfragefunktionalitäten zu und können so jederzeit in der Vorlesung interagieren.
 DIAL kombiniert damit die Vorteile einer Live-Übertragungen (geringe Anforderung an Studierende) mit dem virtuellem Klassenzimmer (Interaktionsmöglichkeiten). 
 
 Das nachfolgende Kapitel beschreibt die Architektur von DIAL sowie die prototypische Implementation unter Verwendung von BigBlueButton.
-Kapitel~\ref{sec:eval} präsentiert eine kurze Evaluation und berichtet über die gemachten Erfahrungen mit DIAL an der HfTL.
+\autoref{sec:eval} präsentiert eine kurze Evaluation und berichtet über die gemachten Erfahrungen mit DIAL an der HfTL.
 
 
 
@@ -189,7 +190,7 @@ Eine Lösung muss aus diesem Zustand heraus schnell einsatzbereit sein.
 Wie in \autoref{dial1} dargestellt, gibt es einen zentralen Server, der die Kommunikation aller Teilnehmer verwaltet und steuert.
 Dieses Konferenzsystem kann abstrakt gesehen frei gewählt werden, wenn passende Schnittstellen zur Verfügung stehen (vgl. \autoref{sec:proto}).
 
-An der Hochschule für Telekommunikation Leipzig wurde auf das Videokonferenzsystem BigBlueButton zurück gegriffen, da sich dieses bereits in Verwendung befand und fertige Schnittstellen besaß, die eine zügige Weiterentwicklung unterstützt haben.
+An der Hochschule für Telekommunikation Leipzig (HfTL) wurde auf das Videokonferenzsystem BigBlueButton zurück gegriffen, da sich dieses bereits in Verwendung befand und fertige Schnittstellen besaß, die eine zügige Weiterentwicklung unterstützt haben.
 
 \begin{figure}
 	\begin{center}
@@ -199,11 +200,11 @@ An der Hochschule für Telekommunikation Leipzig wurde auf das Videokonferenzsyst
 	\end{center}
 \end{figure}
 
-Der prototypische Aufbau sieht vor, dass sich die Teilnehmergruppen in mehreren Räumen verteilt befinden, siehe \autoref{dial1}.
+Der prototypische Aufbau sieht vor, dass sich die Teilnehmergruppen in mehreren Räumen verteilt befinden (siehe \autoref{dial1}).
 %Dabei ist es nicht entscheidend, ob es sich um Hörsäle oder Seminarräume handelt.
 %Es müssen lediglich ein einfaches Notebook, ein Beamer und Audiotechnik zur Übertragung der Veranstaltung zur Verfügung stehen.
-In jedem Veranstaltungsraum tritt ein beliebiger anonymer Nutzer einer initiierten BigBlueButton-Sitzung bei und streamt die übertragenen Sitzungsdaten über einen Beamer und Lautsprecher zum Auditorium.
-Der technischen Support sorgt für einen reibungslosen Ablauf während der Veranstaltung.
+In jedem Veranstaltungsraum tritt ein technischer Supportmitarbeiter der initiierten BigBlueButton-Sitzung bei und streamt die übertragenen Sitzungsdaten über einen Beamer und Lautsprecher zum Auditorium.
+Der Support sorgt für einen reibungslosen Ablauf während der Veranstaltung.
 Die Nutzer im Veranstaltungsraum hören den Audiostrom der Dozierenden und können über die Projektion das Whiteboard, die Präsentationsfolien, die geteilten Anwendungen, den Chat, das Videobild der Dozierenden und die Ergebnisse von Umfragen sehen.
 Ob und wann diese Inhalte geteilt werden, entscheiden die Dozierenden, die der Sitzung mit Moderationsrechten beitreten.
 Die Lehrveranstaltung wird entweder in einem der Veranstaltungsräume oder dezentral gelesen.
@@ -245,12 +246,11 @@ Da diese Kommunikation nur wenig Bandbreite benötigt, stellt auch ein Nutzungssz
 %Das Videokonferenzsystem BigBlueButton ist ein Client-Server-System und seit 2008 unter der GNU Lesser General Public License verfügbar.
 Von den BigBlueButton-Entwicklern wird über GitHub der komplette BigBlueButton-Kern (vgl. \autoref{dial2}) zur Verfügung gestellt.
 Die Dozentenrechner und die Clientrechner zur Hörsaalübertragung (siehe Notebook in \autoref{dial2}) betreten die Veranstaltung über einen der mitgelieferten Standard-Clients.
-Neben den Client-Komponenten besteht die BigBlueButton-Anwendung aus weiteren, teils Open Source-, Modulen, wie z.B. Redis, Freeswitch oder Red5.
-Diese Module funktionieren eigenständig und kommunizieren über den zentralen Kommunikationskanal Redis PubSub miteinander.
+Neben den Client-Komponenten besteht die BigBlueButton-Anwendung aus weiteren, teils Open Source-, Modulen, die über den zentralen Kommunikationskanal Redis PubSub miteinander kommunizieren.
 %Durch Abhören des Kanals können alle Informationen zu BigBlueButton Sitzungen bezogen werden.
-Der modulare Aufbau ermöglicht eine Erweiterung des Systems um eigene Komponenten, wie in \autoref{dial2} die DIAL Serverschnittstelle.
+Die Modularität ermöglicht eine Erweiterung des Systems um eigene Komponenten, wie in \autoref{dial2} die DIAL Serverschnittstelle.
 %ein Abhören und Verändern des Kommunikationsflusses.
-Da die komplette Kommunikation über den Redis PubSub läuft, ist eine manuelle Manipilation der übertragenen Daten möglich.
+Da die komplette Kommunikation über den Redis PubSub läuft, ist eine manuelle Manipulation der übertragenen Daten möglich.
 %Somit ist es möglich einen eigenen Client bzw. ein eigenes Modul zu entwickeln, da der Redis PubSub Channel eine einfache Schnittstelle zum System darstellt.
 %Der Kommunikationskanal stellt somit die Schnittstelle zu DIAL dar.
 
@@ -258,16 +258,16 @@ Auf den DIAL-Clients (siehe Smartphone in \autoref{dial2}) wird, neben einem Web
 Die serverseitige DIAL-Schnittstelle fungiert als Vermittler zwischen den mobilen Clients und dem BigBlueButton-Kern.
 Die Schnittstelle bewältigt zwei Aufgaben, damit die Funktionen \textit{Chat lesen}, \textit{Chat schreiben}, \textit{Abfrage von Umfragen} und \textit{Teilnahme an Umfragen} abbildbar sind.
 %Damit auf den mobilen Endgeräten die Funktionen \textit{Chat lesen}, \textit{Chat schreiben}, \textit{Abfrage von Umfragen} und \textit{Teilnahme an Umfragen} abgebildet werden, bewältigt DIAL zwei Aufgaben (vgl. \autoref{dial2}).
-Zum einen werden Informationen aus der MongoDB gelesen und zum anderen werden Channelnachrichten mit richtiger Syntax in den RedisPubSub geschrieben.
+Zum einen werden die erforderlichen Sitzungsinformationen aus der MongoDB gelesen und zum anderen werden Channelnachrichten mit richtiger Syntax in den RedisPubSub geschrieben.
 %Dabei fungiert die DIAL Schnittstelle als Vermittler zwischen den mobilen DIAL-Clients und dem BigBlueButton-Kern.
 %  PHP bietet für die beschriebenen Anwendungsfälle bereits fertige Erweiterungen an, die serverseitig installiert werden müssen (vgl. \cite{Kau16}, S.~34). 
-Beim Abhören des Redis PubSub ist die Syntax der Channel-Nachrichten erkennbar.
+Durch Abhören des Redis PubSub ist die Syntax der Channel-Nachrichten ermittelbar.
 Diese ist immer gleich und setzt sich aus verschiedenen Variablen zusammen.
 Die Variablenwerte können über API-Aufrufe (vgl. \cite{Doc16}) abgerufen oder teilweise frei gewählt bzw. generiert werden (z.B. Benutzername und Uhrzeit).
 
 %Alle für die Anwendung relevanten Sitzungsinformationen befinden sich in der MongoDB-Datenbank \textit{meteor} unter den Collections \textit{bbb\_chat} und \textit{bbb\_poll}.
 
-Das beschriebene DIAL-System funktioniert unabhängig von Änderungen am BigBlueButton-Kern, solange das Nachrichtenformat des Redis PubSub und die Speicherung der Sitzungsdaten in der MongoDB gleich bleiben.
+Die DIAL-Erweiterung funktioniert unabhängig von Änderungen am BigBlueButton-Kern, solange das Nachrichtenformat des Redis PubSub und die Speicherung der Sitzungsdaten in der MongoDB gleich bleiben.
 
 \section{Use Case und Evaluation}
 
@@ -283,10 +283,8 @@ Das beschriebene DIAL-System funktioniert unabhängig von Änderungen am BigBlueBu
 \end{figure}
 
 
-DIAL wurde im Rahmen einer Vorlesungsveranstaltung an der Hochschule für
-Telekommunikation Leipzig (HfTL) mit ingesamt 20 Studierenden in zwei Räumen
-eingesetzt.
-Abbildung~\ref{img:eva-tn} zeigt die Zusammenfassung des formativen Feedbacks
+DIAL wurde im Rahmen einer Probevorlesung an der HfTL mit insgesamt 20 Studierenden in zwei Räumen eingesetzt.
+\autoref{img:eva-tn} zeigt die Zusammenfassung des formativen Feedbacks
 der Teilnehmer, die zusätzlich in einer Gruppendiskussion ihre Erfahrungen
 äußerten.
 Während der gesamten Vorlesung wurde die eingesetzte Infrastruktur 
@@ -299,9 +297,7 @@ Anforderungen im Vergleich zur normalen Nutzung eines Webkonferenzsystems
 (siehe auch~\cite{Kau16} für Details und weitere Evaluationsergebnisse).
 
 
-Wie üblich bei Live-Vorlesungen stellt der (im Vergleich zur normalen
-Vorlesung) höhere technische Aufwand hohe Ansprüche an den Dozenten und ggf. das
-unterstützende Personal.
+Wie üblich bei Live-Übertragungen stellt der (im Vergleich zur normalen Vorlesung) technische Aufwand hohe Ansprüche an den Dozenten und ggf. das unterstützende Personal.
 Besonders nachteilig ist aus Sicht des Dozenten
 das fehlende non-verbale Feedback der Studierenden in den entfernten Räumen. 
 Dies unterstreicht noch einmal die Wichtigkeit der Kommunikationsmöglichkeit
@@ -312,26 +308,20 @@ Beantwortung. Die verzögerte Beantwortung sowie die fehlende Rückkopplung, ob
 der Dozent die Frage bemerkt und richtig verstanden hat, wurden kritisiert.
 Da der Textchat für alle Studierenden lesbar war, konnten
 einige Fragen bereits in Kleingruppen innerhalb der Studierendengruppe geklärt
-werden, was aber wiederum dem Dozenten entging.
+werden, was wiederum dem Dozenten entging.
 
 Besonders positiv wurden die Umfragen von den Studierenden bewertet, 
 die aus Sicht des Dozenten gleichzeitig zwei Funktionen hatten.
-Primär erlaubten sie dem  Dozenten Fragen (z.B. in Multiple-Choice-Form) zu stellen, um das Verständnis der Studierenden für den weiteren Verlauf der Vorlesung zu sichern. 
+Primär erlaubten sie dem  Dozenten Fragen zu stellen, um das Verständnis der Studierenden für den weiteren Verlauf der Vorlesung zu sichern. 
 Gleichzeitig konnte der Dozent die Zeit, während die Studierenden die Frage
 beantworten, nutzen, um den Textchat zu lesen und im Anschluss ggf. darauf
-einzugehen. Das Feedback der Studierenden zeigt auch, dass sie tendenziell mehr
-Zeit zur Beantwortung der Fragen wünschen, was dem Dozenten wiederum mehr Zeit
-zum Lesen gibt. Dozenten sollten also bei dieser Art der Vorlesung ihr
-didaktisches Konzept so anpassen, dass in regelmäßigen Abständen Umfragen
-möglich sind und ggf. auch kommunizieren, dass nach Umfragen auch auf Fragen des
-Textchats eingegangen werden kann, um so die Erwartungshaltung der Studierenden
-auszurichten.
+einzugehen. Das Feedback der Studierenden zeigt auch, dass sie tendenziell mehr Zeit zur Beantwortung der Fragen wünschen, was dem Dozenten wiederum mehr Zeit zum Lesen gibt. Dozenten sollten also bei dieser Art der Vorlesung ihr didaktisches Konzept so anpassen, dass in regelmäßigen Abständen Umfragen
+möglich sind und ggf. auch kommunizieren, dass nach Umfragen auch auf Fragen des Textchats eingegangen werden kann, um so die Erwartungshaltung der Studierenden auszurichten.
 
 
 Insgesamt wurde die Live-Übertragung mit DIAL als sehr positiv bewertet.
 Um die Kommunikation zwischen Studierenden und Dozenten weiter zu verbessern, 
-wünschten sich die Teilnehmer strukturiertes Feedback über die Webanwendung
-geben zu können, z.B. Multiple statt Single Choice Antworten; Emoticons für eine Handmeldung oder einen Hinweis, dass der Stoff zu schnell wird.
+wünschten sich die Teilnehmer weitere Formen des strukturierten Feedback über die Webanwendung geben zu können, z.B. Multiple statt Single Choice Antworten, oder Emoticons für eine Handmeldung oder einen Hinweis, dass die Vorlesungsgeschwindigkeit zu schnell wird.
 
 
 \begin{comment}
@@ -438,13 +428,14 @@ Weitere Details zur Evaluation sowie Schlussfolgerungen finden sich in \cite{Kau
 
 Mit  DIAL wurde ein Prototyp zur Durchführung verteilter, standortunabhängiger Vorlesungen geschaffen. Dazu wurde das Open Source Konferenzsystem BigBlueButton um  Komponenten erweitert, die den Veranstaltungsteilnehmern Zugang zum Chat- und Umfragesystem ermöglichen.
 Beim Design der Komponenten ist es gelungen ressourcenschonend zu kommunizieren um die mobilen Endgeräte der Teilnehmer bzw. die zumeist beschränkte Netzinfrastruktur so wenig wie nötig zu belasten.
-Nach dem Praxistest zeigten sich Teilnehmer sowie Dozent offen für Vorlesungen dieser Art, das System und die grundlegende Idee dahinter wurden positiv bewertet.
+Nach dem Praxistest zeigten sich Teilnehmer sowie Dozent offen für Vorlesungen dieser Art.
+Das System und die grundlegende Idee dahinter wurden positiv bewertet.
 Um DIAL im Rahmen einer Vorlesungsreihe auszurollen wurde deutlich, dass der Dozent seine Vorlesungsdidaktik systembedingt neu konzipieren muss.
-Damit auch die Basis für den Erfolg der Wissensvermittlung gelegt wird muss die Hochschulverwaltung technischen Support bereitstellen und darüber hinaus für optimale Bild- und Tonqualität in den entfernten Hörsälen sorgen.
+Damit auch die Basis für den Erfolg der Wissensvermittlung gelegt wird, muss die Hochschulverwaltung technischen Support bereitstellen und darüber hinaus für optimale Bild- und Tonqualität in den entfernten Hörsälen sorgen.
 Darüber hinaus brachte die Evaluation den Teilnehmerwunsch nach weiteren strukturierten Interaktionsmöglichkeiten mit dem Dozenten hervor (bspw. Emoticons).
 Dazu ist die geschaffene Schnittstelle zum Redis PubSub Channel entsprechend zu erweitern.
 Dank des Designs von DIAL sind Anpassungen dieser Art in Zukunft möglich.
-DIAL bietet damit eine Lösungsmöglichkeit standortübergreifende Vorlesungen anzubieten und gleichzeitig die Interaktion zwischen Dozent und Studierenden zu gewährleisten.
+DIAL bietet damit eine Lösungsmöglichkeit standortübergreifende Vorlesungen anzubieten und gleichzeitig die Interaktion zwischen Dozierenden und Studierenden zu gewährleisten.
 
 %Gerade das studentische Feedback hat gezeigt, dass noch einige Funktionen der Anwendung verbessert werden müssen, bevor das System endgültig für verteilte Vorlesungen genutzt werden kann.
 %Besonders die Einführung von Multiple Choice Antworten und die Neugestaltung der Chatmenüs sind sinnvoll.
