@@ -38,17 +38,35 @@ Live-Übertragungen von Vorlesungen}
 
 \begin{abstract}
 %Die \LaTeX-Klasse \texttt{lni} setzt die Layout-Vorgaben für Beiträge in LNI Konferenzbänden um. Dieses Dokument beschreibt ihre Verwendung und ist ein Beispiel für die entsprechende Darstellung. Der Abstract ist ein kurzer Überblick über die Arbeit der zwischen 70 und 150 Wörtern lang sein und das Wichtigste enthalten sollte. Die Formatierung erfolgt automatisch innerhalb des abstract-Bereichs.
+\begin{comment}
 {\bf DIAL} = \underline{D}istributed \underline{I}nter\underline{A}ctive \underline{L}ecture - ist ein durch Technik gestütztes Lehrszenario, geschaffen um standortübergreifende Lehrveranstaltungen zu realisieren während die Vorteile einer klassischen Vorlesung (Interaktion zwischen Dozent und Studierenden) aufrecht erhalten bleiben.
 Technische Anforderungen bei allen Komponenten bleiben niedrig.
 Dazu wurde das Konferenzsystem BigBlueButton als Basis zur Veranstaltungsübertragung zwischen Standorten genommen und um Komponenten erweitert, sodass Teilnehmern Zugang zum Chat- und Umfragesystem aus dem Stand-By ihres Endgerätes heraus ermöglicht wird.
 Ein Praxistests und die anschließende Evaluation ergab in Summe positive Bewertungen  der Usabiltiy sowie der Interaktionsmöglichkeiten und zeigte auf wo das System noch verbessert werden kann.
 Die Arbeit zeigt das grundlegende Design von DIAL, geht dabei auf die verwendeten Schnittstellen zum BigBlueButton System ein, skizziert den Praxistest und resümiert grundlegende Erkenntnisse der Evaluation.
+\end{comment}
+Dieser Beitrag präsentiert {\bf DIAL} (\underline{D}istributed
+\underline{I}nter\underline{A}ctive \underline{L}ecture), ein
+BigBlueButton-basiertes System für interaktive Live-Übertragungen von Vorlesungen.
+DIAL erweitert das Konferenzsystem BigBlueButton derart, 
+dass Studierende Zugang zum Chat- und Umfragesystem aus dem Stand-By
+ihres Endgerätes heraus ermöglicht wird, d.h. ohne die Notwendigkeit einer
+permanenten Verbindung. Damit ermöglicht DIAL Teilnehmern einer Live-Übertragung 
+die einfache und direkte Interaktion analog zum 
+virtuellen Klassenzimmer.
+Der Beitrag beschreibt Architektur und die prototypische Implementation von DIAL
+und präsentiert Evaluationsergebnisse aus der praktischen Anwendung an der
+Hochschule für Telekommunikation Leipzig.
 
+
+
+ 
 % Was wird dargestellt? Was ist das Schlüssel Feature ? Wie ist es augegangen? Es wurde evaluiert
 
 \end{abstract}
 \begin{keywords}
-E-Learning, BigBlueButton, Interaktion, verteilte Vorlesung, Kommunikation
+E-Learning, Live-Übertragung, BigBlueButton, Interaktion, verteilte Vorlesung,
+Virtuelles Klassenzimmer
 \end{keywords}
 
 
@@ -184,30 +202,52 @@ Eine Lösung muss aus diesem Zustand heraus schnell einsatzbereit sein.
 
 
 
-\section{Architektur}
+\section{Architektur und Implementation}
 \label{sec:arch}
 
-Wie in \autoref{dial1} dargestellt, gibt es einen zentralen Server, der die Kommunikation aller Teilnehmer verwaltet und steuert.
-Dieses Konferenzsystem kann abstrakt gesehen frei gewählt werden, wenn passende Schnittstellen zur Verfügung stehen (vgl. \autoref{sec:proto}).
+% \autoref{dial1} zeigt die Architektur von DIAL, welches aus einem zentralen
+% Konferenzsystem sowie einer dazu passenden App für Textchat umd Umfragen
+% besteht.
+% Das Konferenzsystem verwaltet und steuert die Kommunikation aller Teilnehmer
+% sowie der Medienstreams, d.h. Audio- und Videosignal. 
+% Die App kommuniziert mit dem zentralen Konferenzsystem zur Übertragung der
+% Textchat-Nachrichten sowie der Umfragedaten. 
 
-An der Hochschule für Telekommunikation Leipzig (HfTL) wurde auf das Videokonferenzsystem BigBlueButton zurück gegriffen, da sich dieses bereits in Verwendung befand und fertige Schnittstellen besaß, die eine zügige Weiterentwicklung unterstützt haben.
 
-\begin{figure}
+
+
+% Wie in \autoref{dial1} dargestellt, gibt es einen zentralen
+%Server, der die Kommunikation aller Teilnehmer verwaltet und steuert.
+%Dieses Konferenzsystem kann abstrakt gesehen frei gewählt werden, wenn passende
+% Schnittstellen zur Verfügung stehen (vgl. \autoref{sec:proto}).
+
+%An der Hochschule für Telekommunikation Leipzig (HfTL) wurde auf das
+% Videokonferenzsystem BigBlueButton zurück gegriffen, da sich dieses bereits in Verwendung befand und fertige Schnittstellen besaß, die eine zügige Weiterentwicklung unterstützt haben.
+
+\begin{figure}[t]
 	\begin{center}
 		\fbox{\includegraphics[trim=0.2cm 9.5cm 1cm 0.15cm,width=1\textwidth,page=5]{../Grafiken/Loesungskonzepte}}
-		\caption{DIAL Prinzip}
+		\caption{Schematische Darstellung einer Live-Übertragung einer Vorlesung mit
+		DIAL}
 		\label{dial1}
 	\end{center}
 \end{figure}
 
-Der prototypische Aufbau sieht vor, dass sich die Teilnehmergruppen in mehreren Räumen verteilt befinden (siehe \autoref{dial1}).
+Das prinzipielle Schema einer Live-Übertragung einer Vorlesung sieht vor, dass
+sich die Teilnehmergruppen in mehreren Räumen verteilt befinden (siehe \autoref{dial1}).
 %Dabei ist es nicht entscheidend, ob es sich um Hörsäle oder Seminarräume handelt.
 %Es müssen lediglich ein einfaches Notebook, ein Beamer und Audiotechnik zur Übertragung der Veranstaltung zur Verfügung stehen.
-In jedem Veranstaltungsraum tritt ein technischer Supportmitarbeiter der initiierten BigBlueButton-Sitzung bei und streamt die übertragenen Sitzungsdaten über einen Beamer und Lautsprecher zum Auditorium.
-Der Support sorgt für einen reibungslosen Ablauf während der Veranstaltung.
+DIAL basiert dazu auf einem Webkonferenzsystem, welches 
+die Verarbeitung der Medienstreams (Audio- und Videosignale) 
+sowie die Kommunikation aller Teilnehmer steuert. 
+In jedem Veranstaltungsraum tritt ein technischer Supportmitarbeiter der
+initiierten Konferenzsitzung bei und streamt die übertragenen Sitzungsdaten
+über einen Beamer und Lautsprecher zum Auditorium.
+%Der Support sorgt für einen reibungslosen Ablauf während der Veranstaltung.
 Die Nutzer im Veranstaltungsraum hören den Audiostrom der Dozierenden und können über die Projektion das Whiteboard, die Präsentationsfolien, die geteilten Anwendungen, den Chat, das Videobild der Dozierenden und die Ergebnisse von Umfragen sehen.
 Ob und wann diese Inhalte geteilt werden, entscheiden die Dozierenden, die der Sitzung mit Moderationsrechten beitreten.
-Die Lehrveranstaltung wird entweder in einem der Veranstaltungsräume oder dezentral gelesen.
+Die Lehrveranstaltung wird entweder in einem der Veranstaltungsräume oder
+dezentral gehalten.
 
 Damit eine Übertragung von Informationen von Studierenden zu Dozierenden stattfindet, wird die Kommunikation durch DIAL erweitert.
 Hierbei nutzen die Studierenden im Auditorium ihre privaten Endgeräte (z.B. Smartphones oder Tablets) um alle Chatnachrichten abzurufen, eigene Nachrichten in den öffentlichen Chat zu schreiben oder an Umfragen teilzunehmen.
@@ -233,8 +273,8 @@ Da diese Kommunikation nur wenig Bandbreite benötigt, stellt auch ein Nutzungssz
 %Durch dieses Verfahren werden Chatnachrichten geschrieben und Umfrageantworten an den BigBlueButton-Server gesendet.
 %Für das Abrufen von Informationen wird die MongoDB, die mit dem HTML5-Client mitgeliefert wird, abgefragt.
 
-\section{Prototypische Implementation}
-\label{sec:proto}
+%\section{Prototypische Implementation}
+%\label{sec:proto}
 \begin{figure}
 	\begin{center}
 		\fbox{\includegraphics[trim= 0cm 7.5cm 3cm 0.1cm,width=1\textwidth,page=6]{../Grafiken/Loesungskonzepte}}
@@ -243,31 +283,102 @@ Da diese Kommunikation nur wenig Bandbreite benötigt, stellt auch ein Nutzungssz
 	\end{center}
 \end{figure}
 
+
+DIAL wurde 
+an der Hochschule für Telekommunikation Leipzig (HfTL) auf Grundlage
+ des Videokonferenzsystem Open-Source-Systems BigBlueButton entwickelt, da
+ dieses bereits für Teletutorien regelmäßig verwendet wird.
 %Das Videokonferenzsystem BigBlueButton ist ein Client-Server-System und seit 2008 unter der GNU Lesser General Public License verfügbar.
-Von den BigBlueButton-Entwicklern wird über GitHub der komplette BigBlueButton-Kern (vgl. \autoref{dial2}) zur Verfügung gestellt.
-Die Dozentenrechner und die Clientrechner zur Hörsaalübertragung (siehe Notebook in \autoref{dial2}) betreten die Veranstaltung über einen der mitgelieferten Standard-Clients.
-Neben den Client-Komponenten besteht die BigBlueButton-Anwendung aus weiteren, teils Open Source-, Modulen, die über den zentralen Kommunikationskanal Redis PubSub miteinander kommunizieren.
+ Die Dozentenrechner und die Clientrechner zur Hörsaalübertragung (siehe
+ Notebook in \autoref{dial2}) betreten die Veranstaltung über einen der
+ mitgelieferten Standard-Clients.
+Von den BigBlueButton-Entwicklern wird über GitHub der komplette
+BigBlueButton-Kern (vgl. \autoref{dial2}) zur Verfügung gestellt,
+der verschiedene Schnittstellen und Module enthält. 
+Als zentraler Kommunikationskanal dient die Komponente \textit{Redis PubSub},
+welches das Lesen und Schreiben von Nachrichten in verschiedenen Channels 
+steuert. 
+Eine \textit{MongoDB}-Datenbank dient als zentraler Speicherort für
+Sitzungsinformationen wie z.B. den kompletten Textchat und alle Umfragedaten. 
+
+
+Die serverseitige DIAL-Schnittstelle fungiert nun als Vermittler zwischen den
+mobilen Clients (Smartphones der Studierenden) und dem BigBlueButton-Kern.
+Sie stellt die folgenden Funktionen zur Verfügung:
+\textit{Chat lesen}, \textit{Chat schreiben}, \textit{Abfrage von Umfragen} und
+\textit{Teilnahme an Umfragen}.
+Dazu liest sie die erforderlichen Sitzungsinformationen aus der
+MongoDB aus und ist in der Lage, entsprechende 
+Channel-Nachrichten in der definierten Syntax in den Redis PubSub
+zu übermitteln bzw. auszulesen.
+Die DIAL-Schnittstelle funktioniert daher unabhängig von Änderungen am
+BigBlueButton-Kern, solange das Nachrichtenformat des Redis PubSub und die Speicherung der Sitzungsdaten in der MongoDB gleich bleiben.
+
+
+Für die mobilien Clients wurde eine PHP-basierte Webapplikation
+entwickelt, welche über eine ansprechende GUI die entsprechenden Funktionen der
+DIAL-Schnittstelle den Nutzern zugänglich macht. 
+Damit benötigen die DIAL-Clients (siehe Smartphone in \autoref{dial2}) 
+lediglich einen Webbrowser und keine zusätzliche Software.
+
+
+
+
+
+ %Die Schnittstelle bewältigt zwei Aufgaben, damit die Funktionen \textit{Chat
+ % lesen}, \textit{Chat schreiben}, \textit{Abfrage von Umfragen} und \textit{Teilnahme an Umfragen} abbildbar sind.
+%Damit auf den mobilen Endgeräten die Funktionen \textit{Chat lesen}, \textit{Chat schreiben}, \textit{Abfrage von Umfragen} und \textit{Teilnahme an Umfragen} abgebildet werden, bewältigt DIAL zwei Aufgaben (vgl. \autoref{dial2}).
+%Zum einen werden die erforderlichen Sitzungsinformationen aus der MongoDB
+% gelesen und zum anderen werden Channelnachrichten mit richtiger Syntax in den RedisPubSub geschrieben.
+%Dabei fungiert die DIAL Schnittstelle als Vermittler zwischen den mobilen DIAL-Clients und dem BigBlueButton-Kern.
+%  PHP bietet für die beschriebenen Anwendungsfälle bereits fertige Erweiterungen an, die serverseitig installiert werden müssen (vgl. \cite{Kau16}, S.~34). 
+%Durch Abhören des Redis PubSub ist die Syntax der Channel-Nachrichten
+% ermittelbar.
+%Diese ist immer gleich und setzt sich aus verschiedenen Variablen zusammen.
+%Die Variablenwerte können über API-Aufrufe (vgl. \cite{Doc16}) abgerufen oder
+% teilweise frei gewählt bzw. generiert werden (z.B. Benutzername und Uhrzeit).
+ 
+%Alle für die Anwendung relevanten Sitzungsinformationen befinden sich in der MongoDB-Datenbank \textit{meteor} unter den Collections \textit{bbb\_chat} und \textit{bbb\_poll}.
+
+%Die DIAL-Erweiterung funktioniert unabhängig von Änderungen am
+% BigBlueButton-Kern, solange das Nachrichtenformat des Redis PubSub und die Speicherung der Sitzungsdaten in der MongoDB gleich bleiben.
+
+
+
+%Neben den Client-Komponenten besteht die BigBlueButton-Anwendung aus weiteren,
+% teils Open Source-, Modulen, die über den zentralen Kommunikationskanal Redis PubSub miteinander kommunizieren.
 %Durch Abhören des Kanals können alle Informationen zu BigBlueButton Sitzungen bezogen werden.
-Die Modularität ermöglicht eine Erweiterung des Systems um eigene Komponenten, wie in \autoref{dial2} die DIAL Serverschnittstelle.
+%Die Modularität ermöglicht eine Erweiterung des Systems um eigene Komponenten,
+% wie in \autoref{dial2} die DIAL Serverschnittstelle.
 %ein Abhören und Verändern des Kommunikationsflusses.
-Da die komplette Kommunikation über den Redis PubSub läuft, ist eine manuelle Manipulation der übertragenen Daten möglich.
+%Da die komplette Kommunikation über den Redis PubSub läuft, ist eine manuelle
+% Manipulation der übertragenen Daten möglich.
 %Somit ist es möglich einen eigenen Client bzw. ein eigenes Modul zu entwickeln, da der Redis PubSub Channel eine einfache Schnittstelle zum System darstellt.
 %Der Kommunikationskanal stellt somit die Schnittstelle zu DIAL dar.
 
-Auf den DIAL-Clients (siehe Smartphone in \autoref{dial2}) wird, neben einem Webbrowser, keine zusätzliche Software installiert.
-Die serverseitige DIAL-Schnittstelle fungiert als Vermittler zwischen den mobilen Clients und dem BigBlueButton-Kern.
-Die Schnittstelle bewältigt zwei Aufgaben, damit die Funktionen \textit{Chat lesen}, \textit{Chat schreiben}, \textit{Abfrage von Umfragen} und \textit{Teilnahme an Umfragen} abbildbar sind.
+%Auf den DIAL-Clients (siehe Smartphone in \autoref{dial2}) wird, neben einem
+% Webbrowser, keine zusätzliche Software installiert.
+%Die serverseitige DIAL-Schnittstelle fungiert als Vermittler zwischen den
+% mobilen Clients und dem BigBlueButton-Kern.
+%Die Schnittstelle bewältigt zwei Aufgaben, damit die Funktionen \textit{Chat
+% lesen}, \textit{Chat schreiben}, \textit{Abfrage von Umfragen} und \textit{Teilnahme an Umfragen} abbildbar sind.
 %Damit auf den mobilen Endgeräten die Funktionen \textit{Chat lesen}, \textit{Chat schreiben}, \textit{Abfrage von Umfragen} und \textit{Teilnahme an Umfragen} abgebildet werden, bewältigt DIAL zwei Aufgaben (vgl. \autoref{dial2}).
-Zum einen werden die erforderlichen Sitzungsinformationen aus der MongoDB gelesen und zum anderen werden Channelnachrichten mit richtiger Syntax in den RedisPubSub geschrieben.
+%Zum einen werden die erforderlichen Sitzungsinformationen aus der MongoDB
+% gelesen und zum anderen werden Channelnachrichten mit richtiger Syntax in den RedisPubSub geschrieben.
 %Dabei fungiert die DIAL Schnittstelle als Vermittler zwischen den mobilen DIAL-Clients und dem BigBlueButton-Kern.
 %  PHP bietet für die beschriebenen Anwendungsfälle bereits fertige Erweiterungen an, die serverseitig installiert werden müssen (vgl. \cite{Kau16}, S.~34). 
-Durch Abhören des Redis PubSub ist die Syntax der Channel-Nachrichten ermittelbar.
-Diese ist immer gleich und setzt sich aus verschiedenen Variablen zusammen.
-Die Variablenwerte können über API-Aufrufe (vgl. \cite{Doc16}) abgerufen oder teilweise frei gewählt bzw. generiert werden (z.B. Benutzername und Uhrzeit).
+%Durch Abhören des Redis PubSub ist die Syntax der Channel-Nachrichten
+% ermittelbar.
+%Diese ist immer gleich und setzt sich aus verschiedenen Variablen zusammen.
+%Die Variablenwerte können über API-Aufrufe (vgl. \cite{Doc16}) abgerufen oder
+% teilweise frei gewählt bzw. generiert werden (z.B. Benutzername und Uhrzeit).
 
 %Alle für die Anwendung relevanten Sitzungsinformationen befinden sich in der MongoDB-Datenbank \textit{meteor} unter den Collections \textit{bbb\_chat} und \textit{bbb\_poll}.
 
-Die DIAL-Erweiterung funktioniert unabhängig von Änderungen am BigBlueButton-Kern, solange das Nachrichtenformat des Redis PubSub und die Speicherung der Sitzungsdaten in der MongoDB gleich bleiben.
+%Die DIAL-Erweiterung funktioniert unabhängig von Änderungen am
+% BigBlueButton-Kern, solange das Nachrichtenformat des Redis PubSub und die Speicherung der Sitzungsdaten in der MongoDB gleich bleiben.
+
+
 
 \section{Use Case und Evaluation}
 
@@ -426,16 +537,40 @@ Weitere Details zur Evaluation sowie Schlussfolgerungen finden sich in \cite{Kau
 
 %Redundanz ist OK - gleiche Begrifflichkeiten verwenden.
 
-Mit  DIAL wurde ein Prototyp zur Durchführung verteilter, standortunabhängiger Vorlesungen geschaffen. Dazu wurde das Open Source Konferenzsystem BigBlueButton um  Komponenten erweitert, die den Veranstaltungsteilnehmern Zugang zum Chat- und Umfragesystem ermöglichen.
-Beim Design der Komponenten ist es gelungen ressourcenschonend zu kommunizieren um die mobilen Endgeräte der Teilnehmer bzw. die zumeist beschränkte Netzinfrastruktur so wenig wie nötig zu belasten.
-Nach dem Praxistest zeigten sich Teilnehmer sowie Dozent offen für Vorlesungen dieser Art.
-Das System und die grundlegende Idee dahinter wurden positiv bewertet.
-Um DIAL im Rahmen einer Vorlesungsreihe auszurollen wurde deutlich, dass der Dozent seine Vorlesungsdidaktik systembedingt neu konzipieren muss.
-Damit auch die Basis für den Erfolg der Wissensvermittlung gelegt wird, muss die Hochschulverwaltung technischen Support bereitstellen und darüber hinaus für optimale Bild- und Tonqualität in den entfernten Hörsälen sorgen.
-Darüber hinaus brachte die Evaluation den Teilnehmerwunsch nach weiteren strukturierten Interaktionsmöglichkeiten mit dem Dozenten hervor (bspw. Emoticons).
-Dazu ist die geschaffene Schnittstelle zum Redis PubSub Channel entsprechend zu erweitern.
-Dank des Designs von DIAL sind Anpassungen dieser Art in Zukunft möglich.
-DIAL bietet damit eine Lösungsmöglichkeit standortübergreifende Vorlesungen anzubieten und gleichzeitig die Interaktion zwischen Dozierenden und Studierenden zu gewährleisten.
+%Mit DIAL wurde ein Prototyp zur Durchführung verteilter, standortunabhängiger
+% Vorlesungen geschaffen.
+
+
+Dieser Beitrag stellte Architektur und prototypische Implementation von DIAL
+vor, einem BigBlueButton-basiertes System für interaktive Live-Übertragungen
+von Vorlesungen. 
+Dazu wurde das Open Source Konferenzsystem BigBlueButton um eine
+Schnittstelle erweitert, die den
+Veranstaltungsteilnehmern Zugang zum Chat- und Umfragesystem ermöglichen.
+Die DIAL-Architektur ermöglicht dabei eine 
+ressourcenschonende Kommunikation zwischen den mobilen
+Endgeräten der Teilnehmer und dem Konferenzsystem,
+um eine große Einsatzfähigkeit auch bei begrenzter 
+Hörsaalinfrastruktur (Netzwerk, Steckdosen)
+zu ermöglichen. 
+Ein Praxistest im Rahmen einer Vorlesung an der HfTL verlief positiv und zeigte
+das Potenzial von DIAL.
+
+
+Zukünftige Arbeiten sollen DIAL um zusätzliche Möglichkeiten der Interaktion
+erweitern (melden, ja/nein). Auch soll vergleichend untersucht werden, in
+welchen didaktischen Szenarien DIAL Vorteile gegenüber klassischen
+Live-Übertragungen bzw. Webkonferenzen bietet.
+
+
+% Nach dem Praxistest zeigten sich Teilnehmer sowie Dozent offen für Vorlesungen dieser Art.
+% Das System und die grundlegende Idee dahinter wurden positiv bewertet.
+% Um DIAL im Rahmen einer Vorlesungsreihe auszurollen wurde deutlich, dass der Dozent seine Vorlesungsdidaktik systembedingt neu konzipieren muss.
+% Damit auch die Basis für den Erfolg der Wissensvermittlung gelegt wird, muss die Hochschulverwaltung technischen Support bereitstellen und darüber hinaus für optimale Bild- und Tonqualität in den entfernten Hörsälen sorgen.
+% Darüber hinaus brachte die Evaluation den Teilnehmerwunsch nach weiteren strukturierten Interaktionsmöglichkeiten mit dem Dozenten hervor (bspw. Emoticons).
+% Dazu ist die geschaffene Schnittstelle zum Redis PubSub Channel entsprechend zu erweitern.
+% Dank des Designs von DIAL sind Anpassungen dieser Art in Zukunft möglich.
+% DIAL bietet damit eine Lösungsmöglichkeit standortübergreifende Vorlesungen anzubieten und gleichzeitig die Interaktion zwischen Dozierenden und Studierenden zu gewährleisten.
 
 %Gerade das studentische Feedback hat gezeigt, dass noch einige Funktionen der Anwendung verbessert werden müssen, bevor das System endgültig für verteilte Vorlesungen genutzt werden kann.
 %Besonders die Einführung von Multiple Choice Antworten und die Neugestaltung der Chatmenüs sind sinnvoll.
