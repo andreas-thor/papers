@@ -66,7 +66,7 @@ Virtuelles Klassenzimmer
 
 \section{Motivation}
 
-Die Live-Übertragung von Vorlesungen per Videokonferenz ist ein weit verbreitet eingesetztes Mittel~\cite{ETeach}, um Studierenden an unterschiedlichen Orten (z.B. Hörsäle der gleichen oder einer anderen Hochschule) die Teilnahme an der gleichen Lehrveranstaltung zu ermöglichen.
+Die Live-Übertragung von Vorlesungen per Webkonferenz ist ein weit verbreitet eingesetztes Mittel~\cite{ETeach}, um Studierenden an unterschiedlichen Orten (z.B. Hörsäle der gleichen oder einer anderen Hochschule) die Teilnahme an der gleichen Lehrveranstaltung zu ermöglichen.
 Hochschulen reagieren damit auf die immer größere Zahl an Studierenden\cite{Sta16} und die damit einhergehenden Ressourcenengpässe.
 Bauliche und räumliche Beschränkungen der Hochschulgebäude (,,Platzprobleme'') erlauben es bei teilnehmerstarken Studiengängen nicht mehr, dass alle Studierenden physisch an der selben Lehrveranstaltung teilnehmen können. 
 Eine Aufteilung von Studiengruppen, bei der Dozierende ihre Lehrveranstaltungen mehrfach halten, stößt schnell an die Grenzen des Lehrdeputats der jeweiligen Dozierenden und wirft durch die Vergrößerung der Lehrveranstaltungszahl weitere Probleme hinsichtlich der Belegung der Hörsäle auf.
@@ -98,7 +98,7 @@ Ein weiterer Nachteil ist ein hoher Stromverbrauch der Endgeräte beim dauerhafte
 Somit sind die Studierenden gezwungen, ihre Endgeräte mit Strom zu versorgen, was in vielen Hörsälen nicht für alle Teilnehmer möglich ist.
 
 Dieser Beitrag präsentiert DIAL, ein BigBlueButton-basiertes System für interaktive Live-Übertragungen von Vorlesungen. 
-Dazu wurde das Open-Source-Videokonferenzsystem BigBlueButton so erweitert, dass Medienstreams von der Nutzerinteraktion via Textchat und Umfragen getrennt verfügbar sind.
+Dazu wurde das Open-Source Webkonferenzsystem BigBlueButton so erweitert, dass Medienstreams von der Nutzerinteraktion via Textchat und Umfragen getrennt verfügbar sind.
 Damit genügt es, dass nur ein Endgerät pro Standort (Hörsaal) als ,,normaler'' Teilnehmer der Webkonferenz beitritt und die Medienstreams per Lautsprecher bzw. Beamer in den Hörsaal verteilt.
 Studierende greifen aus dem Stand-By heraus mit einer eigens entwickelten App auf die Textchat- und Umfragefunktionalitäten zu und können so jederzeit in der Vorlesung interagieren.
 DIAL kombiniert damit die Vorteile einer Live-Übertragungen (geringe Anforderung an Studierende) mit dem virtuellem Klassenzimmer (Interaktionsmöglichkeiten). 
@@ -270,11 +270,11 @@ Da diese Kommunikation nur wenig Bandbreite benötigt, stellt auch ein Nutzungssz
 \end{figure}
 
 
-DIAL wurde an der Hochschule für Telekommunikation Leipzig (HfTL) auf Grundlage des Videokonferenzsystem Open-Source-Systems BigBlueButton entwickelt, da dieses bereits für Teletutorien regelmäßig verwendet wird.
+DIAL wurde an der Hochschule für Telekommunikation Leipzig (HfTL) auf Grundlage des Open-Source Webkonferenzsystems BigBlueButton entwickelt, da dieses bereits für Teletutorien regelmäßig verwendet wird.
 %Das Videokonferenzsystem BigBlueButton ist ein Client-Server-System und seit 2008 unter der GNU Lesser General Public License verfügbar.
 Die Dozentenrechner und die Clientrechner zur Hörsaalübertragung (siehe Notebook in \autoref{dial2}) betreten die Veranstaltung über einen der mitgelieferten Standard-Clients.
 Von den BigBlueButton-Entwicklern wird über GitHub der komplette BigBlueButton-Kern (vgl. \autoref{dial2}) zur Verfügung gestellt, der verschiedene Schnittstellen und Module enthält. 
-Als zentraler Kommunikationskanal dient die Komponente \textit{Redis PubSub}, welches das Lesen und Schreiben von Nachrichten in verschiedenen Channels steuert.
+Als zentraler Kommunikationskanal zwischen den Modulen dient die Komponente \textit{Redis PubSub}, welches das Lesen und Schreiben von Nachrichten in verschiedenen Channels steuert.
 Eine \textit{MongoDB}-Datenbank dient als zentraler Speicherort für Sitzungsinformationen wie z.B. den kompletten Textchat und alle Umfragedaten. 
 
 Die serverseitige DIAL-Schnittstelle fungiert nun als Vermittler zwischen den mobilen Clients (Smartphones der Studierenden) und dem BigBlueButton-Kern.
@@ -489,7 +489,7 @@ Weitere Details zur Evaluation sowie Schlussfolgerungen finden sich in \cite{Kau
 
 
 Dieser Beitrag stellte Architektur und prototypische Implementation von DIAL vor, einem BigBlueButton-basiertes System für interaktive Live-Übertragungen von Vorlesungen. 
-Dazu wurde das Open Source Konferenzsystem BigBlueButton um eine Schnittstelle erweitert, die den Veranstaltungsteilnehmern Zugang zum Chat- und Umfragesystem ermöglichen.
+Dazu wurde das Open Source Webkonferenzsystem BigBlueButton um eine Schnittstelle erweitert, die den Veranstaltungsteilnehmern Zugang zum Chat- und Umfragesystem ermöglichen.
 Die DIAL-Architektur ermöglicht dabei eine ressourcenschonende Kommunikation zwischen den mobilen Endgeräten der Teilnehmer und dem Konferenzsystem, um eine große Einsatzfähigkeit auch bei begrenzter Hörsaalinfrastruktur (Netzwerk, Steckdosen) zu ermöglichen. 
 Ein Praxistest im Rahmen einer Vorlesung an der HfTL verlief positiv und zeigte das Potenzial von DIAL.
 
