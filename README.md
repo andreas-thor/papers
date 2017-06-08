@@ -1,3 +1,3 @@
-## /BBBVorlesung 
-DIAL -- Ein BigBlueButton-basiertes System fÃ¼r dezentrale, interaktive Vorlesungen
+## /DIAL 
+DIAL -- Ein BigBlueButton-basiertes System für dezentrale, interaktive Vorlesungen (aus: Bachelor-Arbeit Luise Kaufmann)
 
